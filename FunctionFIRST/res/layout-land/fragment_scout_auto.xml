@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ScoutActivity$AutoFragment" >
+
+    <CheckBox
+        android:id="@+id/autoHadAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/check_hadAuto" />
+    
+    <LinearLayout
+        android:id="@+id/LinearLayoutAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoHadAuto"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:textSize="24sp"
+            android:text="@string/title_highScore" />
+
+       <EditText
+            android:id="@+id/autoHighScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:inputType="number" />
+
+       <TextView
+           android:id="@+id/textView2"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="0.8"
+           android:textSize="24sp"
+           android:text="@string/title_lowScore" />
+
+        <EditText
+            android:id="@+id/autoLowScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:textSize="24sp"
+            android:text="@string/title_hotScore" />
+
+        <EditText
+            android:id="@+id/autoHotScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/autoMobilityBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayoutAuto"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:text="@string/check_mobilityBonus" />
+
+    <CheckBox
+        android:id="@+id/autoGoalieZone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoMobilityBonus"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:text="@string/check_goalieZone" />
+
+</RelativeLayout>

@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Function FIRST</string>
-    
+    <string name="app_name">Function FIRST</string>  
     <string name="title_activity_scout">Scout</string>
     <string name="action_go_to_match">Go To Match</string>
     <string name="action_set_device">Set Device Number</string>
@@ -23,23 +21,28 @@
     <string name="check_goalieZone">Robot Started in Goalie Zone?</string>
     <string name="check_broken">Broke Down During Match?</string>
     <string name="check_disabled">Disabled During Match?</string>
-    <string name="check_yellowCard">Received Yellow Card?</string><string name="check_redCard">Received Red Card?</string><string name="check_defensive">Played Defensively?</string><string name="title_highScore">Number of Balls Scored in High Goals</string>
-    <string name="title_highAttempt">Number of Attempted High Scores</string>
+    <string name="check_yellowCard">Received Yellow Card?</string>
+    <string name="check_redCard">Received Red Card?</string>
+    <string name="check_defensive">Played Defensively?</string>
+    <string name="radio_truss">Shot Over Truss?</string>
+    <string name="radio_catch">Caught the Ball?</string>
+    <string name="radio_lowGoal">Scored in Low Goal?</string>
+    <string name="radio_highGoal">Scored in High Goal?</string><string name="radio_none">None</string>
+    <string name="title_highScore">Number of Balls Scored in High Goals</string>
     <string name="title_lowScore">Number of Balls Scored in Low Goals</string>
-    <string name="title_lowAttempt">Number of Attempted Low Scores</string>
     <string name="title_hotScore">Number of Balls Scored in Hot Goals</string>
-    <string name="title_shotsBlocked">Number of Opponent Shots Blocked</string>
-    <string name="title_passesBlocked">Number of Opponent Passes Blocked</string>
-    <string name="title_assists">Number of Assists</string>
-    <string name="title_truss">Number of Shots over Truss</string>
-    <string name="title_catches">Number of Valid Catches</string>
+    <string name="title_cycleGrid">Cycle Number\n1</string>
+    <string name="title_partner">Partner Team #</string>
+    <string name="title_team">Team #</string>
+    <string name="title_numberCycles">Number of Cycles: </string>
+    <string name="title_numberHighScores">Number of High Scores: </string>
+    <string name="title_numberLowScores">Number of Low Scores: </string>
+    <string name="title_numberTrussScores">Number of Truss Scores:</string>
+    <string name="title_numberCatchScores">Number of Catch Scores: </string>
+    <string name="title_possessionTime">Possession Time: </string>
     <string name="title_regFouls">Number of Regular Fouls Incurred</string>
     <string name="title_techFouls">Number of Technical Fouls Incurred</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
     
-    
-    
-    
-
 </resources>

@@ -6,142 +6,263 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".TeleFragment" >
+    tools:context=".ScoutActivity$TeleFragment" >
+    
+    <TextView
+        android:id="@+id/reviewCycles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cycleLayout"
+        android:layout_toRightOf="@+id/cycleLayout"
+        android:text="@string/title_numberCycles"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+      
+    <TextView
+        android:id="@+id/reviewHighScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewCycles"
+        android:layout_below="@+id/reviewCycles"
+        android:text="@string/title_numberHighScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/reviewLowScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewHighScores"
+        android:layout_below="@+id/reviewHighScores"
+        android:text="@string/title_numberLowScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/reviewTrussScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewLowScores"
+        android:layout_below="@+id/reviewLowScores"
+        android:text="@string/title_numberTrussScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/reviewCatchScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/reviewTrussScores"
+        android:layout_below="@+id/reviewTrussScores"
+        android:text="@string/title_numberCatchScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/reviewPossessionTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewCatchScores"
+        android:layout_below="@+id/reviewCatchScores"
+        android:text="@string/title_possessionTime"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RelativeLayout
+        android:id="@+id/cycleLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal" >
+        android:layout_alignParentTop="true" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="0dp"
+        <GridLayout
+            android:id="@+id/cycleGrid"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_highScore" />
-
-        <EditText
-            android:id="@+id/teleHighScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_highAttempt" />
-
-        <EditText
-            android:id="@+id/teleHighAttempt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"         
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/linearLayout1"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_lowScore" />
-
-        <EditText
-            android:id="@+id/teleLowScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_lowAttempt" />
-
-        <EditText
-            android:id="@+id/teleLowAttempt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"          
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:id="@+id/linearLayout3"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:layout_below="@id/linearLayout2"
-    android:layout_marginTop="20dp"
-    android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_assists" />
-
-       	<EditText
-            android:id="@+id/teleTrussScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-       	<TextView
-       	    android:id="@+id/textView6"
-       	    android:layout_width="0dp"
-       	    android:layout_height="wrap_content"
-       	    android:layout_weight="0.8"
-       	    android:textSize="24sp"
-       	    android:text="@string/title_truss" />
-
-        <EditText
-            android:id="@+id/teleCatchScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"            
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:textSize="24sp"
-            android:text="@string/title_catches" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border"
+            android:columnCount="7" >
+			
+            <Button
+                android:id="@+id/buttonLastCycle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="1"
+                android:background="@drawable/arrow_button"
+                android:rotation="270" />
         
-        <EditText
-            android:id="@+id/teleAssistScore"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/titleCycleGrid"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="1"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:text="@string/title_cycleGrid" />
+            
+            <Button
+                android:id="@+id/buttonNextCycle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_row="1"
+                android:background="@drawable/arrow_button"
+                android:rotation="90" />
+
+            <TextView
+                android:id="@+id/titlePartner1"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="4"
+                android:text="@string/title_partner" />
+
+            <TextView
+                android:id="@+id/titleTeam"
+                android:layout_width="wrap_content"
+                android:layout_column="3"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="4"
+                android:text="@string/title_team" />
+
+            <TextView
+                android:id="@+id/titlePartner2"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="4"
+                android:text="@string/title_partner" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner1Blue"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="5" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridTeamBlue"
+                android:layout_column="3"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="5" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner2Blue"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="5" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner1White"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="6" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridTeamWhite"
+                android:layout_column="3"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="6" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner2White"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="6" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner1Red"
+                android:layout_column="2"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="7" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridTeamRed"
+                android:layout_column="3"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="7" />
+
+            <com.vandenrobotics.functionfirst.views.GridBox
+                android:id="@+id/gridPartner2Red"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_row="7" />
+
+            
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_column="0"
+                android:layout_gravity="left|top"
+                android:layout_row="2" />
+
+            <Space
+                android:layout_height="5dp"
+                android:layout_column="3"
+                android:layout_gravity="left|top"
+                android:layout_row="0" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_column="5"
+                android:layout_gravity="left|top"
+                android:layout_row="4" />
+
+            <Space
+                android:layout_height="5dp"
+                android:layout_column="3"
+                android:layout_gravity="left|top"
+                android:layout_row="3" />
+        </GridLayout>
+        
+        <RadioGroup
+            android:id="@+id/radioGroupGoals"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"            
-            android:inputType="number" />
-    </LinearLayout>
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/cycleGrid" >
+
+            <RadioButton
+                android:id="@+id/radioHighGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_highGoal" />
+
+            <RadioButton
+                android:id="@+id/radioLowGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_lowGoal" />
+
+            <RadioButton
+                android:id="@+id/RadioNoneGoals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_none" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroupTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cycleGrid"
+            android:layout_toRightOf="@+id/radioGroupGoals" >
+
+            <RadioButton
+                android:id="@+id/radioTruss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_truss" />
+
+            <RadioButton
+                android:id="@+id/radioCatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_catch" />
+
+            <RadioButton
+                android:id="@+id/radioNoneTC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_none" />
+        </RadioGroup>
+
+    </RelativeLayout>
 
 </RelativeLayout>

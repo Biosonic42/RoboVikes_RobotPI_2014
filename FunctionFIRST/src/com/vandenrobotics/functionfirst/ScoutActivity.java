@@ -107,22 +107,17 @@ public class ScoutActivity extends Activity {
 					mMD[match].autoData.hotScore = data[8];
 					
 					// teleData
-					mMD[match].teleData.highScore = data[9];
-					mMD[match].teleData.highAttempt = data[10];
-					mMD[match].teleData.lowScore = data[11];
-					mMD[match].teleData.lowAttempt = data[12];
-					mMD[match].teleData.trussScore = data[13];
-					mMD[match].teleData.catchScore = data[14];
-					mMD[match].teleData.assistScore = data[15];
+					mMD[match].teleData.goalStatus = data[9];
+					mMD[match].teleData.TCStatus = data[10];
 					
 					// postData
-					mMD[match].postData.regFouls = data[16];
-					mMD[match].postData.techFouls = data[17];
-					mMD[match].postData.disabled = (data[18]==1);
-					mMD[match].postData.broken = (data[19]==1);
-					mMD[match].postData.yellowCard = (data[20]==1);
-					mMD[match].postData.redCard = (data[21]==1);
-					mMD[match].postData.defensive = (data[22]==1);
+					mMD[match].postData.regFouls = data[11];
+					mMD[match].postData.techFouls = data[12];
+					mMD[match].postData.disabled = (data[13]==1);
+					mMD[match].postData.broken = (data[14]==1);
+					mMD[match].postData.yellowCard = (data[15]==1);
+					mMD[match].postData.redCard = (data[16]==1);
+					mMD[match].postData.defensive = (data[17]==1);
 					
 				} catch (NumberFormatException e){
 					e.printStackTrace();

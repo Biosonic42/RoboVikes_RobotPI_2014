@@ -69,17 +69,19 @@ public class TeleFragment extends Fragment {
 	}
 	
 	private void loadData(final TeleData teleData){
-		//new data
+		cycleLayout.radioSwitch.switchGoals.setProgress(teleData.goalStatus);
+		cycleLayout.radioSwitch.switchTC.setProgress(teleData.TCStatus);
 	}
 	
 	private void saveData(TeleData teleData){
 		if(viewsAssigned) {
-			//new data
+			teleData.goalStatus = cycleLayout.radioSwitch.switchGoals.getProgress();
+			teleData.TCStatus = cycleLayout.radioSwitch.switchTC.getProgress();
 		}
 	}
 	
 	private void assignViews(View view){
-		cycleLayout = view.findViewById(R.id.cycleLayout);
+		cycleLayout = (CycleLayout)view.findViewById(R.id.cycleLayout);
 		viewsAssigned=true;
 	}
 }

@@ -24,10 +24,10 @@
     <string name="check_yellowCard">Received Yellow Card?</string>
     <string name="check_redCard">Received Red Card?</string>
     <string name="check_defensive">Played Defensively?</string>
-    <string name="radio_truss">Shot Over Truss?</string>
-    <string name="radio_catch">Caught the Ball?</string>
-    <string name="radio_lowGoal">Scored in Low Goal?</string>
-    <string name="radio_highGoal">Scored in High Goal?</string><string name="radio_none">None</string>
+    <string name="radio_truss">Truss</string>
+    <string name="radio_catch">Catch</string>
+    <string name="radio_lowGoal">Low Goal</string>
+    <string name="radio_highGoal">High Goal</string><string name="radio_none">None</string>
     <string name="title_highScore">Number of Balls Scored in High Goals</string>
     <string name="title_lowScore">Number of Balls Scored in Low Goals</string>
     <string name="title_hotScore">Number of Balls Scored in Hot Goals</string>

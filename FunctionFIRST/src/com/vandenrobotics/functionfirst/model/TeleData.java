@@ -5,30 +5,18 @@ import android.os.Parcelable;
 
 public class TeleData
 		implements Parcelable {
-	public int highScore;
-	public int highAttempt;
-	public int lowScore;
-	public int lowAttempt;
 	
-	public int trussScore;
-	public int catchScore;
-	public int assistScore;
+	public int goalStatus;
+	public int TCStatus;
 	
 	public TeleData(){
-		highScore = 0;
-		highAttempt = 0;
-		lowScore = 0;
-		lowAttempt = 0;
-		
-		trussScore = 0;
-		catchScore = 0;
-		assistScore = 0;
+		goalStatus = 1;
+		TCStatus = 1;
 	}
 	
 	@Override
 	public String toString(){
-		return highScore   +","+highAttempt+","+lowScore   +","+lowAttempt+","
-			  +trussScore  +","+catchScore +","+assistScore;
+		return goalStatus + "," + TCStatus;
 	}
 
 	@Override

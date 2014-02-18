@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:id="@+id/seekBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+	    <SeekBar
+	        android:id="@+id/switchGoals"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.5"
+	        android:max="2"
+	        android:progressDrawable="@drawable/progress_bar" />
+	    
+		<SeekBar
+	        android:id="@+id/switchTC"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0.5"
+	        android:max="2" 
+	        android:progressDrawable="@drawable/progress_bar"/>
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/seekBarTitlesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBarLayout"
+        android:orientation="horizontal">
+
+	    <TextView
+	        android:id="@+id/titleSBLowGoal"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_lowGoal" />
+	    
+	    <TextView
+	        android:id="@+id/titleSBNoneGoal"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_none" />
+	    
+	    <TextView
+	        android:id="@+id/titleSBHighGoal"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_highGoal" />
+   
+	    <TextView
+	        android:id="@+id/titleSBTruss"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_truss" />
+	    
+	    <TextView
+	        android:id="@+id/titleSBNoneTC"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_none" />
+	    
+	    <TextView
+	        android:id="@+id/titleSBCatch"
+	        android:layout_width="0dp"
+	        android:layout_weight=".167"
+	        android:layout_height="wrap_content"
+	        android:text="@string/radio_catch" />
+
+    </LinearLayout>
+
+</RelativeLayout>

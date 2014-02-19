@@ -36,6 +36,7 @@ public class ScoutActivity extends Activity {
 	
 	@Override
 	protected void onResume(){
+		super.onResume();
 		mCurMatch = readMatch();
 		Intent intent = new Intent(this, MatchActivity.class);
 		intent.putExtra("matchNumber", mCurMatch);

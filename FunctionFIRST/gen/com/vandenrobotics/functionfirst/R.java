@@ -179,6 +179,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int border=0x7f020001;
         public static final int ic_launcher=0x7f020002;
         public static final int progress_bar=0x7f020003;
+        public static final int seek_thumb=0x7f020004;
+        public static final int seekbar_thumb_clicked=0x7f020005;
+        public static final int seekbar_thumb_default=0x7f020006;
+        public static final int seekbar_thumb_selected=0x7f020007;
     }
     public static final class id {
         public static final int LinearLayoutAuto=0x7f09001e;

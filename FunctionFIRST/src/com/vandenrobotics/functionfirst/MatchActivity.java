@@ -160,7 +160,6 @@ public class MatchActivity extends FragmentActivity
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
 	private void setupActionBar() {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -224,7 +223,6 @@ public class MatchActivity extends FragmentActivity
 		viewPager.setAdapter(mAdapter);
 		actionBar.setSelectedNavigationItem(viewPager.getCurrentItem());
 	}
-	
 	
 	public void goTo_nextMatch(View view){
 		// pause all fragments in order to save the data from them

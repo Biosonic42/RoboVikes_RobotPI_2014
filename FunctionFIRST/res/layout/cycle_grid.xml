@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cycleGrid"
-    android:background="@drawable/border"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/border"
     android:columnCount="7" >
 
     <Button
@@ -26,7 +26,7 @@
         android:background="@drawable/border"
         android:gravity="center"
         android:text="@string/title_cycleGrid" />
-    
+
     <Button
         android:id="@+id/buttonNextCycle"
         android:layout_width="50dp"
@@ -61,57 +61,84 @@
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner1Blue"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="2"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="5" />
+        android:layout_row="5"
+        android:background="@drawable/blue_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridTeamBlue"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="3"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="5" />
+        android:layout_row="5"
+        android:background="@drawable/blue_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner2Blue"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="4"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="5" />
+        android:layout_row="5"
+        android:background="@drawable/blue_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner1White"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="2"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="6" />
+        android:layout_row="6"
+        android:background="@drawable/white_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridTeamWhite"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="3"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="6" />
+        android:layout_row="6"
+        android:background="@drawable/white_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner2White"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="4"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="6" />
+        android:layout_row="6"
+        android:background="@drawable/white_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner1Red"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="2"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="7" />
+        android:layout_row="7"
+        android:background="@drawable/red_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridTeamRed"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="3"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="7" />
+        android:layout_row="7"
+        android:background="@drawable/red_grid" />
 
     <com.vandenrobotics.functionfirst.views.GridBox
         android:id="@+id/gridPartner2Red"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_column="4"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_row="7" />
+        android:layout_row="7"
+        android:background="@drawable/red_grid" />
 
     <Space
         android:layout_width="5dp"
@@ -136,5 +163,5 @@
         android:layout_column="3"
         android:layout_gravity="left|top"
         android:layout_row="3" />
-    
+
 </GridLayout>

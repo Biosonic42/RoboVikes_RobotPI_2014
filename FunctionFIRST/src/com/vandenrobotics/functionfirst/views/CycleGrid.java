@@ -5,9 +5,9 @@ import com.vandenrobotics.functionfirst.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.GridLayout;
+import android.widget.RelativeLayout;
 
-public class CycleGrid extends GridLayout {
+public class CycleGrid extends RelativeLayout {
 
 	public CycleGrid(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

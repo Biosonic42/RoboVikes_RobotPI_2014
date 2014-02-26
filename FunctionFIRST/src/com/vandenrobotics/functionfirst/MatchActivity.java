@@ -1,6 +1,7 @@
 package com.vandenrobotics.functionfirst;
 
 import com.vandenrobotics.functionfirst.adapter.TabsPagerAdapter;
+import com.vandenrobotics.functionfirst.adapter.TabsViewPager;
 import com.vandenrobotics.functionfirst.model.MatchData;
 
 import android.app.ActionBar;
@@ -23,7 +24,7 @@ import android.widget.TextView;
 public class MatchActivity extends FragmentActivity 
 	implements ActionBar.TabListener {
 
-	private ViewPager viewPager;
+	private TabsViewPager viewPager;
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	
@@ -52,7 +53,7 @@ public class MatchActivity extends FragmentActivity
 		deviceNumber = getIntent().getIntExtra("deviceNumber",0);
 		allianceColor = (deviceNumber>0 && deviceNumber<4)? R.color.FIRST_red : R.color.FIRST_blue;
 		textColor = (allianceColor==R.color.FIRST_red)? R.color.Black : R.color.White;
-		viewPager = (ViewPager) findViewById(R.id.pager);
+		viewPager = (TabsViewPager) findViewById(R.id.pager);
 		actionBar = getActionBar();
 		
 		setupInitBar();

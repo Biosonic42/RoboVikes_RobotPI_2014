@@ -45,7 +45,5 @@ Thumbs.db
 *.ap_
 *.cache
 *.apk
-*.png
-*.jpg
 *.properties
 *.dex

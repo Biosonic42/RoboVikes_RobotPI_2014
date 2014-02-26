@@ -1,86 +1,65 @@
 package com.vandenrobotics.functionfirst.views;
 
+import com.vandenrobotics.functionfirst.R.color;
 import com.vandenrobotics.functionfirst.R;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 
 public class GridBox extends SurfaceView implements SurfaceHolder.Callback {
 	
-	Canvas canvas;
-	Paint paint;
-	float downx = 0, downy = 0, upx = 0, upy = 0;
+	private SurfaceHolder sh;
+	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	
 	public GridBox(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initSelf();
+        sh = getHolder();
+		sh.addCallback(this);
+		paint.setColor(getResources().getColor(color.Goldenrod));
+		paint.setStyle(Style.FILL);
     }
 
     public GridBox(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initSelf();
+        sh = getHolder();
+		sh.addCallback(this);
+		paint.setColor(getResources().getColor(color.Goldenrod));
+		paint.setStyle(Style.FILL);
     }
 
     public GridBox(Context context) {
         super(context);
-        initSelf();
+        sh = getHolder();
+		sh.addCallback(this);
+		paint.setColor(getResources().getColor(color.Goldenrod));
+		paint.setStyle(Style.FILL);
     }
-    
-    private void initSelf(){
-    	
-    	canvas = new Canvas();
-    	paint = new Paint();
-    	paint.setColor(getResources().getColor(R.color.Goldenrod));
-    	
-    	this.setOnTouchListener(new View.OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch(event.getAction()){
-				case MotionEvent.ACTION_DOWN:
-					downx = event.getX();
-					downy = event.getY();
-					break;
-				case MotionEvent.ACTION_MOVE:
-					break;
-				case MotionEvent.ACTION_UP: 
-                    upx = event.getX();
-                    upy = event.getY();
-                    canvas.drawLine(downx, downy, upx, upy, paint);
-                    break;
-				case MotionEvent.ACTION_CANCEL:
-					break;
-				default:
-                    break;
-				}
-				
-				return true;
-			}
-		});
-    }
-
-	@Override
-	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-		
+	
+	public void surfaceCreated(SurfaceHolder holder) {
+		Bitmap background = BitmapFactory.decodeResource(getResources(),R.drawable.grid_box);
+		float scaleHeight = (float)background.getHeight()/(float)getHeight();
+		float scaleWidth = (float)background.getWidth()/(float)getWidth();
+		int newWidth = Math.round(background.getWidth()/scaleWidth);
+		int newHeight = Math.round(background.getHeight()/scaleHeight);
+		Bitmap scaled = Bitmap.createScaledBitmap(background, newWidth, newHeight, true);
+		Canvas canvas = sh.lockCanvas();
+		canvas.drawBitmap(scaled, 0, 0, null);
+		canvas.drawCircle(50, 50, 40, paint);
+		sh.unlockCanvasAndPost(canvas);
 	}
-
-	@Override
-	public void surfaceCreated(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
-		
+	
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 	}
-
-	@Override
-	public void surfaceDestroyed(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
-		
+	
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// save the data interpretations from the view
 	}
 	
 }

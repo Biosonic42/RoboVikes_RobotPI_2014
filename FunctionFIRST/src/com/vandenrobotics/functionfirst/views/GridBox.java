@@ -39,7 +39,7 @@ public class GridBox extends SurfaceView implements SurfaceHolder.Callback {
         super(context, attrs, defStyle);
         sh = getHolder();
 		sh.addCallback(this);
-		paint.setColor(getResources().getColor(color.Goldenrod));
+		paint.setColor(getResources().getColor(color.Gold));
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeWidth(6f);
 		paint.setAntiAlias(true);
@@ -85,7 +85,7 @@ public class GridBox extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void surfaceDestroyed(SurfaceHolder holder) {
-		// save the data interpretations from the view
+
 	}
 	
 	private void initTouch(){

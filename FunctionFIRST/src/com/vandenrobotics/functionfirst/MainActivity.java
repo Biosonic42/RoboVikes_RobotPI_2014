@@ -35,7 +35,8 @@ public class MainActivity extends Activity {
     		.setTitle("RobotPI " + getResources().getString(R.string.version_number))
     		.setMessage("Robotics Private Investigator (RobotPI) is designed by FRC Team 701 as an electronic alternative to scouting.\n" +
     				"The scouting application records both objective and subjective data about each individual team at an FRC event. \n"
-    				+ "It is used to compare teams for alliance selection as well as predict match outcomes.")
+    				+ "It is used to compare teams for alliance selection as well as predict match outcomes. \n"
+    				+ "Coded and Designed by Joseph A. Lewis from FRC Team 701")
     		.show();
     }
     

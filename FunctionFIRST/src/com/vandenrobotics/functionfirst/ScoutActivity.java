@@ -108,8 +108,10 @@ public class ScoutActivity extends Activity {
 					mMD[match].autoData.hotScore = data[8];
 					
 					// teleData
+					/*
 					mMD[match].teleData.goalStatus = data[9];
 					mMD[match].teleData.TCStatus = data[10];
+					*/
 					
 					// postData
 					mMD[match].postData.regFouls = data[11];

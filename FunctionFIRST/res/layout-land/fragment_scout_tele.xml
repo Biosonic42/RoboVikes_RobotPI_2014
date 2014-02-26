@@ -53,15 +53,6 @@
         android:text="@string/title_numberCatchScores"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/reviewPossessionTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/reviewCatchScores"
-        android:layout_below="@+id/reviewCatchScores"
-        android:text="@string/title_possessionTime"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <com.vandenrobotics.functionfirst.views.CycleLayout
         android:id="@+id/cycleLayout"
         android:layout_width="wrap_content"

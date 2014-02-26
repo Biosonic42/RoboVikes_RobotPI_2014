@@ -6,8 +6,8 @@ import android.os.Parcelable;
 public class TeleData
 		implements Parcelable {
 	
-	public int goalStatus;
-	public int TCStatus;
+	public int goalStatus = 1;
+	public int TCStatus = 1;
 	
 	public TeleData(){
 		goalStatus = 1;

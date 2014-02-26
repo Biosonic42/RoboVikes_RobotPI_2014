@@ -31,7 +31,7 @@
     <string name="title_highScore">Number of Balls Scored in High Goals</string>
     <string name="title_lowScore">Number of Balls Scored in Low Goals</string>
     <string name="title_hotScore">Number of Balls Scored in Hot Goals</string>
-    <string name="title_cycleGrid">Cycle Number\n1</string>
+    <string name="title_cycleGrid">Cycle Number</string>
     <string name="title_partner">Partner Team #</string>
     <string name="title_team">Team #</string>
     <string name="title_numberCycles">Number of Cycles: </string>

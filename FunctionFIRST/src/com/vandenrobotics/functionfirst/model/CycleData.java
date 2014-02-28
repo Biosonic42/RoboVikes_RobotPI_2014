@@ -1,15 +1,15 @@
 package com.vandenrobotics.functionfirst.model;
 
 public class CycleData {
-	public int[] gridBoxScores;
-	public int switchGoalsProgress;
-	public int switchTCProgress;
+	
+	public GridData[] gridData;
+	public int goalsProgress;
+	public int tcProgress;
 	
 	public CycleData(){
-		gridBoxScores = new int[9];
-		switchGoalsProgress = 1;
-		switchTCProgress = 1;
-		
+		gridData = new GridData[9];
+		goalsProgress = 1;
+		tcProgress = 1;
 	}
-	
+
 }

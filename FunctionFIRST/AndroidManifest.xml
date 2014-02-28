@@ -36,6 +36,7 @@
             android:name="com.vandenrobotics.functionfirst.MatchActivity"
             android:label="@string/title_activity_scout"
             android:parentActivityName="com.vandenrobotics.functionfirst.ScoutActivity"
+            android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

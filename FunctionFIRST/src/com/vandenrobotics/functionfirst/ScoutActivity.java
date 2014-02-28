@@ -87,7 +87,7 @@ public class ScoutActivity extends Activity {
 				
 				try {
 					for(int i = 0; i < data.length; i++){
-						data[i] = Integer.parseInt(data_text[i]);
+						data[i] = Integer.parseInt(data_text[i]); 
 					}
 					
 					int match = data[0]-1;
@@ -107,20 +107,14 @@ public class ScoutActivity extends Activity {
 					mMD[match].autoData.lowScore = data[7];
 					mMD[match].autoData.hotScore = data[8];
 					
-					// teleData
-					/*
-					mMD[match].teleData.goalStatus = data[9];
-					mMD[match].teleData.TCStatus = data[10];
-					*/
-					
 					// postData
-					mMD[match].postData.regFouls = data[11];
-					mMD[match].postData.techFouls = data[12];
-					mMD[match].postData.disabled = (data[13]==1);
-					mMD[match].postData.broken = (data[14]==1);
-					mMD[match].postData.yellowCard = (data[15]==1);
-					mMD[match].postData.redCard = (data[16]==1);
-					mMD[match].postData.defensive = (data[17]==1);
+					mMD[match].postData.regFouls = data[9];
+					mMD[match].postData.techFouls = data[10];
+					mMD[match].postData.disabled = (data[11]==1);
+					mMD[match].postData.broken = (data[12]==1);
+					mMD[match].postData.yellowCard = (data[13]==1);
+					mMD[match].postData.redCard = (data[14]==1);
+					mMD[match].postData.defensive = (data[15]==1);
 					
 				} catch (NumberFormatException e){
 					e.printStackTrace();

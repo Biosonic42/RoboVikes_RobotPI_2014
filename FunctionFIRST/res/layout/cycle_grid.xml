@@ -66,4 +66,12 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/titleTeam" />
 
+    <Button
+        android:id="@+id/buttonUndo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/gridBox"
+        android:text="@string/button_undo" />
+
 </RelativeLayout>

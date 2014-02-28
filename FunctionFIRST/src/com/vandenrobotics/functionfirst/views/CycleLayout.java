@@ -1,5 +1,7 @@
 package com.vandenrobotics.functionfirst.views;
 
+import java.util.ArrayList;
+
 import com.vandenrobotics.functionfirst.R;
 import com.vandenrobotics.functionfirst.model.CycleData;
 
@@ -11,29 +13,31 @@ import android.widget.RelativeLayout;
 
 public class CycleLayout extends RelativeLayout {
 
-	public int currentCycle = 1;
 	public CycleGrid cycleGrid;
 	public RadioSwitch radioSwitch;
 	public Button buttonLastCycle;
 	public Button buttonNextCycle;
+	public Button buttonUndo;
 	
-	public CycleData[] cycles = new CycleData[256];
+	public int maxHighScores = 0, maxLowScores = 0;
+	public int maxTrussScores = 0, maxCatchScores = 0;
+	
+	public ArrayList<CycleData> cycles = new ArrayList<CycleData>();
+	
+	public int currentCycle = 1;
 	
 	public CycleLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        cycles[currentCycle-1] = new CycleData();
         initView();
     }
 
     public CycleLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        cycles[currentCycle-1] = new CycleData();
         initView();
     }
 
     public CycleLayout(Context context) {
         super(context);
-        cycles[currentCycle-1] = new CycleData();
         initView();
     }
 	
@@ -42,46 +46,91 @@ public class CycleLayout extends RelativeLayout {
 		addView(view);
 		cycleGrid = (CycleGrid)view.findViewById(R.id.cycleGrid);
 		radioSwitch = (RadioSwitch)view.findViewById(R.id.RadioSeekBars);
-		buttonLastCycle = (Button) view.findViewById(R.id.buttonLastCycle);
-		buttonNextCycle = (Button) view.findViewById(R.id.buttonNextCycle);
-		
+		buttonLastCycle = (Button)view.findViewById(R.id.buttonLastCycle);
+		buttonNextCycle = (Button)view.findViewById(R.id.buttonNextCycle);
+		buttonUndo = (Button)view.findViewById(R.id.buttonUndo);
 		cycleGrid.title.setText(getResources().getString(R.string.title_cycleGrid)+"\n"+currentCycle);
 		
-		buttonLastCycle.setOnClickListener(new View.OnClickListener() {
+		cycles.add(new CycleData());
+		
+		// update new cycle
+		loadData();
+		
+		buttonLastCycle.setOnClickListener(new View.OnClickListener(){
 
 			@Override
-			public void onClick(View v) {
+			public void onClick(View arg0) {
 				goToCycle(currentCycle-1);
 			}
-			
 		});
-		
-		buttonNextCycle.setOnClickListener(new View.OnClickListener() {
-			
+		buttonNextCycle.setOnClickListener(new View.OnClickListener(){
+
 			@Override
-			public void onClick(View v) {
+			public void onClick(View arg0) {
 				goToCycle(currentCycle+1);
 			}
 		});
+		
+		buttonUndo.setOnClickListener(new View.OnClickListener(){
+			
+			@Override
+			public void onClick(View arg0) {
+				try{
+				cycleGrid.gridBox.lines.remove(cycleGrid.gridBox.lines.size()-1);
+				cycleGrid.gridBox.drawLines();
+				} catch (IndexOutOfBoundsException e){
+					e.printStackTrace();
+				} catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-
-	protected void goToCycle(int i) {
-		//save old cycle progress
-		cycles[currentCycle-1].switchGoalsProgress=radioSwitch.switchGoals.getProgress();
-		cycles[currentCycle-1].switchTCProgress=radioSwitch.switchTC.getProgress();
+	
+	private void goToCycle(int cycle){
+		// save data for this cycle
+		saveData();
 		
-		//assign new cycle and update title
-		if(i>0) currentCycle = i;
-		cycleGrid.title.setText(getResources().getString(R.string.title_cycleGrid)+"\n"+currentCycle);
+		//change cycles
+		currentCycle = cycle>0? cycle : currentCycle;
+		if(currentCycle==cycles.size()+1)
+			cycles.add(new CycleData());
 		
-		//create new data if this cycle is new
-		if(cycles[currentCycle-1]==null){
-			cycles[currentCycle-1] = new CycleData();
+		// update new cycle
+		loadData();
+	}
+	
+	public void saveData(){
+		//saves data for current cycle
+		cycles.get(currentCycle-1).gridData = cycleGrid.gridBox.calculateData();
+		cycleGrid.gridBox.lines.clear();
+		cycles.get(currentCycle-1).goalsProgress = radioSwitch.switchGoals.getProgress();
+		cycles.get(currentCycle-1).tcProgress = radioSwitch.switchTC.getProgress();
+		if(radioSwitch.switchGoals.getProgress()==0)
+			maxLowScores+=1;
+		else if(radioSwitch.switchGoals.getProgress()==2)
+			maxHighScores+=1;
+		if(radioSwitch.switchTC.getProgress()==0)
+			maxTrussScores+=1;
+		else if(radioSwitch.switchTC.getProgress()==2)
+			maxCatchScores+=1;
+	}
+	
+	public void loadData(){
+		//load data for current cycle
+		try{
+			cycleGrid.gridBox.calculateLines(cycles.get(currentCycle-1).gridData);
+			try{
+			cycleGrid.gridBox.drawLines();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+			radioSwitch.switchGoals.setProgress(cycles.get(currentCycle-1).goalsProgress);
+			radioSwitch.switchTC.setProgress(cycles.get(currentCycle-1).tcProgress);
+			cycleGrid.title.setText(getResources().getString(R.string.title_cycleGrid)+"\n" + currentCycle);
+		} catch (IndexOutOfBoundsException e){
+			e.printStackTrace();
 		}
-		
-		//load data from the cycle, new or not
-		radioSwitch.switchGoals.setProgress(cycles[currentCycle-1].switchGoalsProgress);
-		radioSwitch.switchTC.setProgress(cycles[currentCycle-1].switchTCProgress);
 	}
 
 }

@@ -31,12 +31,11 @@
             android:textSize="24sp"
             android:text="@string/title_highScore" />
 
-       <EditText
+       <NumberPicker
             android:id="@+id/autoHighScore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
+            android:layout_weight="0.2" />
 
        <TextView
            android:id="@+id/textView2"
@@ -46,12 +45,11 @@
            android:textSize="24sp"
            android:text="@string/title_lowScore" />
 
-        <EditText
+        <NumberPicker
             android:id="@+id/autoLowScore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
+            android:layout_weight="0.2" />
 
         <TextView
             android:id="@+id/textView3"
@@ -61,12 +59,11 @@
             android:textSize="24sp"
             android:text="@string/title_hotScore" />
 
-        <EditText
+        <NumberPicker
             android:id="@+id/autoHotScore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:inputType="number" />
+            android:layout_weight="0.2" />
     </LinearLayout>
 
     <CheckBox
@@ -82,9 +79,10 @@
         android:id="@+id/autoGoalieZone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/autoMobilityBonus"
-        android:layout_marginTop="20dp"
-        android:textSize="24sp"
-        android:text="@string/check_goalieZone" />
+        android:layout_alignBaseline="@+id/autoMobilityBonus"
+        android:layout_alignBottom="@+id/autoMobilityBonus"
+        android:layout_alignParentRight="true"
+        android:text="@string/check_goalieZone"
+        android:textSize="24sp" />
 
 </RelativeLayout>

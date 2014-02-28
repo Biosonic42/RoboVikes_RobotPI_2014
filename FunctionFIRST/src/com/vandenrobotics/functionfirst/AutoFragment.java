@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.NumberPicker;
 
 import com.vandenrobotics.functionfirst.model.AutoData;
 
@@ -16,9 +16,9 @@ public class AutoFragment extends Fragment {
 	private CheckBox autoMobilityBonus;
 	private CheckBox autoGoalieZone;
 	
-	private EditText autoHighScore;
-	private EditText autoLowScore;
-	private EditText autoHotScore;
+	private NumberPicker autoHighScore;
+	private NumberPicker autoLowScore;
+	private NumberPicker autoHotScore;
 	
 	private boolean viewsAssigned = false;
 	
@@ -86,9 +86,9 @@ public class AutoFragment extends Fragment {
 		autoHadAuto.setChecked(autoData.hadAuto);
 		autoMobilityBonus.setChecked(autoData.mobilityBonus);
 		autoGoalieZone.setChecked(autoData.goalieZone);
-		autoHighScore.setText(""+autoData.highScore);
-		autoLowScore.setText(""+autoData.lowScore);
-		autoHotScore.setText(""+autoData.hotScore);
+		autoHighScore.setValue(autoData.highScore);
+		autoLowScore.setValue(autoData.lowScore);
+		autoHotScore.setValue(autoData.hotScore);
 	}
 	
 	private void saveData(AutoData autoData){
@@ -96,23 +96,10 @@ public class AutoFragment extends Fragment {
 			autoData.hadAuto = autoHadAuto.isChecked();
 			autoData.mobilityBonus = autoMobilityBonus.isChecked();
 			autoData.goalieZone = autoGoalieZone.isChecked();
-			autoData.highScore = (isInt(autoHighScore.getText().toString()) ?
-					Integer.parseInt(autoHighScore.getText().toString()) : 0);
-			autoData.lowScore = (isInt(autoLowScore.getText().toString()) ?
-					Integer.parseInt(autoLowScore.getText().toString()) : 0);
-			autoData.hotScore = (isInt(autoHotScore.getText().toString()) ?
-					Integer.parseInt(autoHotScore.getText().toString()) : 0);
+			autoData.highScore = autoHighScore.getValue();
+			autoData.lowScore = autoLowScore.getValue();
+			autoData.hotScore = autoHotScore.getValue();
 		}
-	}
-	
-	private boolean isInt(String s){
-		try{
-			Integer.parseInt(s);
-		} catch(NumberFormatException e){
-			return false;
-		}
-		
-		return true;
 	}
 	
 	private void assignViews(View view){
@@ -120,9 +107,15 @@ public class AutoFragment extends Fragment {
 		autoMobilityBonus = (CheckBox)view.findViewById(R.id.autoMobilityBonus);
 		autoGoalieZone = (CheckBox)view.findViewById(R.id.autoGoalieZone);
 		
-		autoHighScore = (EditText)view.findViewById(R.id.autoHighScore);
-		autoLowScore = (EditText)view.findViewById(R.id.autoLowScore);
-		autoHotScore = (EditText)view.findViewById(R.id.autoHotScore);
+		autoHighScore = (NumberPicker)view.findViewById(R.id.autoHighScore);
+		autoHighScore.setMinValue(0);
+		autoHighScore.setMaxValue(3);
+		autoLowScore = (NumberPicker)view.findViewById(R.id.autoLowScore);
+		autoLowScore.setMinValue(0);
+		autoLowScore.setMaxValue(3);
+		autoHotScore = (NumberPicker)view.findViewById(R.id.autoHotScore);
+		autoHotScore.setMinValue(0);
+		autoHotScore.setMaxValue(3);
 		viewsAssigned = true;
 	}
 }

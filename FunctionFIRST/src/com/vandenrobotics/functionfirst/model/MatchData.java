@@ -16,6 +16,6 @@ public class MatchData {
 	@Override
 	public String toString(){
 		return initData.toString()+","+autoData.toString()+","
-	          +teleData.toString()+","+postData.toString();
+	          +teleData.toString()+postData.toString();
 	}
 }

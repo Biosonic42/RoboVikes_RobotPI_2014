@@ -1,4 +1,3 @@
-	public TextView title;
 package com.vandenrobotics.functionfirst.views;
 
 import com.vandenrobotics.functionfirst.R;

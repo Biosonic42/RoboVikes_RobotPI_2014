@@ -8,56 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ScoutActivity$TeleFragment" >
     
-    <TextView
-        android:id="@+id/reviewCycles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/cycleLayout"
-        android:layout_toRightOf="@+id/cycleLayout"
-        android:text="@string/title_numberCycles"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-      
-    <TextView
-        android:id="@+id/reviewHighScores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/reviewCycles"
-        android:layout_below="@+id/reviewCycles"
-        android:text="@string/title_numberHighScores"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <TextView
-        android:id="@+id/reviewLowScores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/reviewHighScores"
-        android:layout_below="@+id/reviewHighScores"
-        android:text="@string/title_numberLowScores"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/reviewTrussScores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/reviewLowScores"
-        android:layout_below="@+id/reviewLowScores"
-        android:text="@string/title_numberTrussScores"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <TextView
-        android:id="@+id/reviewCatchScores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/reviewTrussScores"
-        android:layout_below="@+id/reviewTrussScores"
-        android:text="@string/title_numberCatchScores"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <com.vandenrobotics.functionfirst.views.CycleLayout
         android:id="@+id/cycleLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" />
 
 </RelativeLayout>

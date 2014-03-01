@@ -8,6 +8,8 @@ public class CycleData {
 	
 	public CycleData(){
 		gridData = new GridData[9];
+		for (int i = 0; i < 9; i++)
+			gridData[i] = new GridData();
 		goalsProgress = 1;
 		tcProgress = 1;
 	}

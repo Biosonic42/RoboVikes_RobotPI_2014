@@ -17,18 +17,15 @@ public class TeleData
 	
 	@Override
 	public String toString(){
-		String returnVal = "{" + cycles.size() + ",";
+		String returnVal = cycles.size() + ",";
 		for(int i = 0; i<cycles.size(); i++){
-			returnVal += "[";
 			for(int j = 0; j<=8; j++){
 				if(cycles.get(i)!=null)
 					returnVal += cycles.get(i).gridData[j].toString() + ",";
 			}
 			returnVal += cycles.get(i).goalsProgress + ",";
-			returnVal += cycles.get(i).tcProgress;
-			returnVal += "],";
+			returnVal += cycles.get(i).tcProgress + ",";
 		}
-		returnVal += "}";
 		
 		return returnVal;
 	}

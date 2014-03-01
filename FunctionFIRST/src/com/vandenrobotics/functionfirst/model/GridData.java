@@ -13,6 +13,6 @@ public class GridData {
 	public String toString(){
 		int tempPass = passed? 1 : 0;
 		
-		return "("+tempPass+","+where+")";
+		return tempPass+","+where;
 	}
 }

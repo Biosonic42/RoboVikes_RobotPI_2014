@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.NumberPicker;
 
 public class PostFragment extends Fragment {
 	
@@ -18,8 +18,8 @@ public class PostFragment extends Fragment {
 	private CheckBox postRedCard;
 	private CheckBox postDefensive;
 	
-	private EditText postRegFouls;
-	private EditText postTechFouls;
+	private NumberPicker postRegFouls;
+	private NumberPicker postTechFouls;
 
 	
 	private boolean viewsAssigned = false;
@@ -86,8 +86,8 @@ public class PostFragment extends Fragment {
 		postRedCard.setChecked(postData.redCard);
 		postDefensive.setChecked(postData.defensive);
 		
-		postRegFouls.setText(""+postData.regFouls);
-		postTechFouls.setText(""+postData.techFouls);
+		postRegFouls.setValue(postData.regFouls);
+		postTechFouls.setValue(postData.techFouls);
 	}
 	
 	private void saveData(PostData postData){
@@ -97,21 +97,9 @@ public class PostFragment extends Fragment {
 			postData.yellowCard = postYellowCard.isChecked();
 			postData.redCard = postRedCard.isChecked();
 			postData.defensive = postDefensive.isChecked();
-			postData.regFouls = isInt(postRegFouls.getText().toString()) ?
-					Integer.parseInt(postRegFouls.getText().toString()) : 0;
-			postData.techFouls = isInt(postTechFouls.getText().toString()) ?
-					Integer.parseInt(postTechFouls.getText().toString()) : 0;
+			postData.regFouls = postRegFouls.getValue();
+			postData.techFouls = postTechFouls.getValue();
 		}
-	}
-	
-	private boolean isInt(String s){
-		try{
-			Integer.parseInt(s);
-		} catch(NumberFormatException e){
-			return false;
-		}
-		
-		return true;
 	}
 	
 	private void assignViews(View view){
@@ -120,8 +108,12 @@ public class PostFragment extends Fragment {
 		postYellowCard = (CheckBox)view.findViewById(R.id.postYellowCard);
 		postRedCard = (CheckBox)view.findViewById(R.id.postRedCard);
 		postDefensive = (CheckBox)view.findViewById(R.id.postDefensive);
-		postRegFouls = (EditText)view.findViewById(R.id.postRegFouls);
-		postTechFouls = (EditText)view.findViewById(R.id.postTechFouls);
+		postRegFouls = (NumberPicker)view.findViewById(R.id.postRegFouls);
+		postRegFouls.setMinValue(0);
+		postRegFouls.setMaxValue(20);
+		postTechFouls = (NumberPicker)view.findViewById(R.id.postTechFouls);
+		postTechFouls.setMinValue(0);
+		postTechFouls.setMaxValue(20);
 		viewsAssigned=true;
 	}
 }

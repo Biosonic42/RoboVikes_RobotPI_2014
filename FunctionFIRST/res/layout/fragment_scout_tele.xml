@@ -7,135 +7,57 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ScoutActivity$TeleFragment" >
+    
+    <TextView
+        android:id="@+id/reviewCycles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cycleLayout"
+        android:layout_below="@+id/cycleLayout"
+        android:text="@string/title_numberCycles"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/reviewHighScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewCycles"
+        android:layout_below="@+id/reviewCycles"
+        android:text="@string/title_numberHighScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/reviewLowScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewHighScores"
+        android:layout_below="@+id/reviewHighScores"
+        android:text="@string/title_numberLowScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/reviewTrussScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reviewLowScores"
+        android:layout_below="@+id/reviewLowScores"
+        android:text="@string/title_numberTrussScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/reviewCatchScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/reviewTrussScores"
+        android:layout_below="@+id/reviewTrussScores"
+        android:text="@string/title_numberCatchScores"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.vandenrobotics.functionfirst.views.CycleLayout
+        android:id="@+id/cycleLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_highScore" />
-
-        <EditText
-            android:id="@+id/teleHighScore"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_highAttempt" />
-
-        <EditText
-            android:id="@+id/teleHighAttempt"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/linearLayout1"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_lowScore" />
-
-        <EditText
-            android:id="@+id/teleLowScore"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_lowAttempt" />
-
-        <EditText
-            android:id="@+id/teleLowAttempt"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:id="@+id/linearLayout3"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:layout_below="@id/linearLayout2"
-    android:layout_marginTop="25dp"
-    android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_assists" />
-
-       	<EditText
-            android:id="@+id/teleTrussScore"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-       	<TextView
-       	    android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-       	    android:layout_weight="0.8"
-       	    android:text="@string/title_truss" />
-
-        <EditText
-            android:id="@+id/teleCatchScore"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:text="@string/title_catches" />
-        
-        <EditText
-            android:id="@+id/teleAssistScore"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:inputType="number" />
-
-    </LinearLayout>
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

@@ -24,7 +24,7 @@
             android:textSize="24sp"
             android:text="@string/title_regFouls" />
 
-        <EditText
+        <NumberPicker
             android:id="@+id/postRegFouls"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:textSize="24sp"
             android:text="@string/title_techFouls" />
 
-        <EditText
+        <NumberPicker
             android:id="@+id/postTechFouls"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

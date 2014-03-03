@@ -14,6 +14,8 @@ import android.os.Environment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+
+import com.vandenrobotics.functionfirst.model.CycleData;
 import com.vandenrobotics.functionfirst.model.MatchData;
 import com.vandenrobotics.functionfirst.model.TeamList;
 
@@ -36,6 +38,7 @@ public class ScoutActivity extends Activity {
 	
 	@Override
 	protected void onResume(){
+		super.onResume();
 		mCurMatch = readMatch();
 		Intent intent = new Intent(this, MatchActivity.class);
 		intent.putExtra("matchNumber", mCurMatch);
@@ -80,51 +83,75 @@ public class ScoutActivity extends Activity {
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
-			while ((line = br.readLine())!=null){
-				String[] data_text = line.split(",");
-				int[] data = new int[data_text.length];
+			while ((line = br.readLine()) != null){
+				String[] dataString = line.split(",");
+
+				int[] data = new int[dataString.length];
 				
 				try {
 					for(int i = 0; i < data.length; i++){
-						data[i] = Integer.parseInt(data_text[i]);
+						data[i] = Integer.parseInt(dataString[i]); 
 					}
-					
-					int match = data[0]-1;
-					
+					int index = 0;
+					int match = data[index]-1;
+
 					mMD[match] = new MatchData();
 					
 					// initData
-					mMD[match].initData.matchNumber = data[0];
-					mMD[match].initData.teamNumber = data[1];
-					mMD[match].initData.allianceColor = data[2];
+					mMD[match].initData.matchNumber = data[index];
+					index+=1;
+					mMD[match].initData.teamNumber = data[index];
+					index+=1;
+					mMD[match].initData.allianceColor = data[index];
+					index+=1;
 					
 					// autoData
-					mMD[match].autoData.hadAuto = (data[3]==1);
-					mMD[match].autoData.mobilityBonus = (data[4]==1);
-					mMD[match].autoData.goalieZone = (data[5]==1);
-					mMD[match].autoData.highScore = data[6];
-					mMD[match].autoData.lowScore = data[7];
-					mMD[match].autoData.hotScore = data[8];
+					mMD[match].autoData.hadAuto = (data[index]==1);
+					index+=1;
+					mMD[match].autoData.mobilityBonus = (data[index]==1);
+					index+=1;
+					mMD[match].autoData.goalieZone = (data[index]==1);
+					index+=1;
+					mMD[match].autoData.highScore = data[index];
+					index+=1;
+					mMD[match].autoData.lowScore = data[index];
+					index+=1;
+					mMD[match].autoData.hotScore = data[index];
+					index+=2;
 					
 					// teleData
-					mMD[match].teleData.highScore = data[9];
-					mMD[match].teleData.highAttempt = data[10];
-					mMD[match].teleData.lowScore = data[11];
-					mMD[match].teleData.lowAttempt = data[12];
-					mMD[match].teleData.trussScore = data[13];
-					mMD[match].teleData.catchScore = data[14];
-					mMD[match].teleData.assistScore = data[15];
+					for(int i = 0; i < data[9]; i++){
+						mMD[match].teleData.cycles.add(new CycleData());
+						for(int j = 0; j < 9; j++){
+							mMD[match].teleData.cycles.get(i).gridData[j].passed = (data[index]==1);
+							index+=1;
+							mMD[match].teleData.cycles.get(i).gridData[j].where = data[index];
+							index+=1;
+						}
+						mMD[match].teleData.cycles.get(i).goalsProgress = data[index];
+						index+=1;
+						mMD[match].teleData.cycles.get(i).tcProgress = data[index];
+						index+=1;
+					}
 					
 					// postData
-					mMD[match].postData.regFouls = data[16];
-					mMD[match].postData.techFouls = data[17];
-					mMD[match].postData.disabled = (data[18]==1);
-					mMD[match].postData.broken = (data[19]==1);
-					mMD[match].postData.yellowCard = (data[20]==1);
-					mMD[match].postData.redCard = (data[21]==1);
-					mMD[match].postData.defensive = (data[22]==1);
+					mMD[match].postData.regFouls = data[index];
+					index+=1;
+					mMD[match].postData.techFouls = data[index];
+					index+=1;
+					mMD[match].postData.disabled = (data[index]==1);
+					index+=1;
+					mMD[match].postData.broken = (data[index]==1);
+					index+=1;
+					mMD[match].postData.yellowCard = (data[index]==1);
+					index+=1;
+					mMD[match].postData.redCard = (data[index]==1);
+					index+=1;
+					mMD[match].postData.defensive = (data[index]==1);
 					
 				} catch (NumberFormatException e){
+					e.printStackTrace();
+				} catch (IndexOutOfBoundsException e){
 					e.printStackTrace();
 				}
 			} 

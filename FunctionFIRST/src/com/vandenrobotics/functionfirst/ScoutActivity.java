@@ -15,7 +15,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.vandenrobotics.functionfirst.model.CycleData;
 import com.vandenrobotics.functionfirst.model.MatchData;
 import com.vandenrobotics.functionfirst.model.TeamList;
 
@@ -103,51 +102,7 @@ public class ScoutActivity extends Activity {
 					mMD[match].initData.teamNumber = data[index];
 					index+=1;
 					mMD[match].initData.allianceColor = data[index];
-					index+=1;
-					
-					// autoData
-					mMD[match].autoData.hadAuto = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.mobilityBonus = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.goalieZone = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.highScore = data[index];
-					index+=1;
-					mMD[match].autoData.lowScore = data[index];
-					index+=1;
-					mMD[match].autoData.hotScore = data[index];
-					index+=2;
-					
-					// teleData
-					for(int i = 0; i < data[9]; i++){
-						mMD[match].teleData.cycles.add(new CycleData());
-						for(int j = 0; j < 9; j++){
-							mMD[match].teleData.cycles.get(i).gridData[j].passed = (data[index]==1);
-							index+=1;
-							mMD[match].teleData.cycles.get(i).gridData[j].where = data[index];
-							index+=1;
-						}
-						mMD[match].teleData.cycles.get(i).goalsProgress = data[index];
-						index+=1;
-						mMD[match].teleData.cycles.get(i).tcProgress = data[index];
-						index+=1;
-					}
-					
-					// postData
-					mMD[match].postData.regFouls = data[index];
-					index+=1;
-					mMD[match].postData.techFouls = data[index];
-					index+=1;
-					mMD[match].postData.disabled = (data[index]==1);
-					index+=1;
-					mMD[match].postData.broken = (data[index]==1);
-					index+=1;
-					mMD[match].postData.yellowCard = (data[index]==1);
-					index+=1;
-					mMD[match].postData.redCard = (data[index]==1);
-					index+=1;
-					mMD[match].postData.defensive = (data[index]==1);
+					index+=1;					
 					
 				} catch (NumberFormatException e){
 					e.printStackTrace();

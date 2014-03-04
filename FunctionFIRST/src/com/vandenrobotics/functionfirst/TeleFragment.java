@@ -1,18 +1,15 @@
 package com.vandenrobotics.functionfirst;
 
 import com.vandenrobotics.functionfirst.model.TeleData;
-import com.vandenrobotics.functionfirst.views.CycleLayout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class TeleFragment extends Fragment {
 
-	private CycleLayout cycleLayout;
 	private boolean viewsAssigned = false;
 	
 	private TeleData mTeleData;
@@ -54,16 +51,12 @@ public class TeleFragment extends Fragment {
 		else if(isVisibleToUser)
 		{
 			assignViews(getView());
-			cycleLayout.cycleGrid.gridBox.setVisibility(SurfaceView.VISIBLE);
 			loadData(mTeleData);
-			cycleLayout.loadData();
-			cycleLayout.cycleGrid.gridBox.drawLines();
 			
 		}
 		else if(!isVisibleToUser)
 		{
 			saveData(mTeleData);
-			cycleLayout.cycleGrid.gridBox.setVisibility(SurfaceView.INVISIBLE);
 		}
 	}
 	
@@ -75,21 +68,14 @@ public class TeleFragment extends Fragment {
 	}
 	
 	private void loadData(final TeleData teleData){
-		cycleLayout.cycles = teleData.cycles;
-		if(viewsAssigned)
-			cycleLayout.loadData();
 	}
 	
 	private void saveData(TeleData teleData){
 		if(viewsAssigned) {
-			cycleLayout.saveData();
-			teleData.cycles = cycleLayout.cycles;
 		}
 	}
 	
 	private void assignViews(View view){
-		cycleLayout = (CycleLayout)view.findViewById(R.id.cycleLayout);
-		
 		viewsAssigned=true;
 	}
 }

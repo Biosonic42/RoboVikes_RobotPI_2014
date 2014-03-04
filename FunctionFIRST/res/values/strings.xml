@@ -17,7 +17,7 @@
     <string name="button_nextMatch">Continue to Next Match</string>
     <string name="button_undo">Undo</string><string name="button_finish">Finish</string>
     <string name="check_hadAuto">Had Auto?</string>
-    <string name="check_mobilityBonus">Obtained Mobility Bonus?</string>
+    <string name="check_autoHot">Hot Score</string><string name="check_mobilityBonus">Obtained Mobility Bonus?</string>
     <string name="check_goalieZone">Robot Started in Goalie Zone?</string>
     <string name="check_broken">Broke Down During Match?</string>
     <string name="check_disabled">Disabled During Match?</string>
@@ -34,16 +34,11 @@
     <string name="title_cycleGrid">Cycle Number</string>
     <string name="title_partner">Partner Team #</string>
     <string name="title_team">Team #</string>
-    <string name="title_numberCycles">Number of Cycles: </string>
-    <string name="title_numberHighScores">Number of High Scores: </string>
-    <string name="title_numberLowScores">Number of Low Scores: </string>
-    <string name="title_numberTrussScores">Number of Truss Scores:</string>
-    <string name="title_numberCatchScores">Number of Catch Scores: </string>
-    <string name="title_possessionTime">Possession Time: </string>
     <string name="title_regFouls">Number of Regular Fouls Incurred</string>
     <string name="title_techFouls">Number of Technical Fouls Incurred</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    
     
     
 </resources>

@@ -15,4 +15,36 @@ public class InitData {
 	public String toString(){
 		return matchNumber+","+teamNumber+","+allianceColor;
 	}
+	
+	public boolean fromString(String string){
+		try{
+			String[] dataString = string.split(",");
+			int[] data = new int[dataString.length];
+			
+			try{
+				for(int i = 0; i < data.length; i++)
+					data[i] = Integer.parseInt(dataString[i]);
+			} catch (NumberFormatException e){
+				e.printStackTrace();
+				return false;
+			} catch (IndexOutOfBoundsException e){
+				e.printStackTrace();
+				return false;
+			}
+			
+			matchNumber = data[0];
+			teamNumber = data[1];
+			allianceColor = data[2];
+				
+		} catch (IndexOutOfBoundsException e){
+			e.printStackTrace();
+			return false;
+		} catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		
+		// only way it can get to this point is if there are no exceptions
+		return true;
+	}
 }

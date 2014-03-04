@@ -1,33 +1,17 @@
 package com.vandenrobotics.functionfirst.model;
 
-import java.util.ArrayList;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class TeleData
 		implements Parcelable {
 	
-	public ArrayList<CycleData> cycles;
-	
 	public TeleData(){
-		cycles = new ArrayList<CycleData>();
-		cycles.add(new CycleData());
 	}
 	
 	@Override
 	public String toString(){
-		String returnVal = cycles.size() + ",";
-		for(int i = 0; i<cycles.size(); i++){
-			for(int j = 0; j<=8; j++){
-				if(cycles.get(i)!=null)
-					returnVal += cycles.get(i).gridData[j].toString() + ",";
-			}
-			returnVal += cycles.get(i).goalsProgress + ",";
-			returnVal += cycles.get(i).tcProgress + ",";
-		}
-		
-		return returnVal;
+		return null;
 	}
 
 	@Override

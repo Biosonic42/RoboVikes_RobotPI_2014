@@ -56,7 +56,7 @@ public class CoachActivity extends Activity {
 		setupActionBar();
 
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
-		final View contentView = findViewById(R.id.fullscreen_content);
+		final View contentView = findViewById(R.id.fieldDiagram);
 
 		// Set up an instance of SystemUiHider to control the system UI for
 		// this activity.
@@ -118,7 +118,13 @@ public class CoachActivity extends Activity {
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
-		findViewById(R.id.dummy_button).setOnTouchListener(
+		findViewById(R.id.buttonTruss).setOnTouchListener(
+				mDelayHideTouchListener);
+		findViewById(R.id.buttonCatch).setOnTouchListener(
+				mDelayHideTouchListener);
+		findViewById(R.id.buttonScore).setOnTouchListener(
+				mDelayHideTouchListener);
+		findViewById(R.id.buttonDefense).setOnTouchListener(
 				mDelayHideTouchListener);
 	}
 

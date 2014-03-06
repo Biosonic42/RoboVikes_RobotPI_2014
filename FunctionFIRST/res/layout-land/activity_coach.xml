@@ -1,8 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/White"
     tools:context=".CoachActivity" >
 
     <!--
@@ -11,17 +11,183 @@
          TextureView, etc.
     -->
 
-    <TextView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+	<ImageView
+	    android:id="@+id/fieldDiagram"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:keepScreenOn="true"
+	    android:contentDescription="@string/descFieldDiagram"
+	    android:src="@drawable/field_layout" />
+	 
+	<LinearLayout
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true">
 
+		<Button
+		    android:id="@+id/buttonUNDO"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:textColor="@color/Black"
+		    android:text="@string/button_undo" />
+
+		<Button
+		    android:id="@+id/buttonREDO"
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:textColor="@color/Black"
+		    android:text="@string/button_redo" />
+
+		<TextView
+		    android:id="@+id/titleMatchNumber"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/editMatchNumber"
+		    android:textColor="@color/Black" />
+	    
+	    <EditText
+	        android:id="@+id/editMatchNumber"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:ems="10"
+	        android:inputType="number"
+	        android:textColor="@color/Black"
+	        android:imeOptions="actionDone" />
+
+	    <Button
+	        android:id="@+id/buttonEXPORT"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="2"
+	        android:textColor="@color/Black"
+	        android:text="@string/button_export" />
+   
+	</LinearLayout>
+	
+ 	<EditText
+        android:id="@+id/teamRed1"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/teamRed2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_red1"
+        android:textColor="@color/Red" />
+
+    <EditText
+        android:id="@+id/teamRed2"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_red2"
+        android:textColor="@color/Red" />
+
+   <EditText
+        android:id="@+id/teamRed3"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/teamRed2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_red3"
+        android:textColor="@color/Red" />
+   
+   <EditText
+        android:id="@+id/teamBlue1"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/teamBlue2"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40dp"
+        android:gravity="right"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_blue1"
+        android:textColor="@color/Blue" />
+
+    <EditText
+        android:id="@+id/teamBlue2"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="right"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_blue2"
+        android:textColor="@color/Blue" />
+
+   <EditText
+        android:id="@+id/teamBlue3"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/teamBlue2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
+        android:gravity="right"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/team_blue3"
+        android:textColor="@color/Blue" />
+   
+   <View
+        android:id="@+id/red1Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/red_triangle" />
+    
+    <View
+        android:id="@+id/red2Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/red1Placer"
+        android:background="@drawable/red_circle" />
+    
+    <View
+        android:id="@+id/red3Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/red2Placer"
+        android:background="@drawable/red_square" />
+    
+    <View
+        android:id="@+id/blue1Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/blue2Placer"
+        android:background="@drawable/blue_triangle" />
+    
+    <View
+        android:id="@+id/blue2Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/blue3Placer"
+        android:background="@drawable/blue_circle" />
+    
+    <View
+        android:id="@+id/blue3Placer"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/blue_square" />
+   
     <!--
          This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows.
@@ -29,8 +195,10 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true" >
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
@@ -43,13 +211,38 @@
             tools:ignore="UselessParent" >
 
             <Button
-                android:id="@+id/dummy_button"
+                android:id="@+id/buttonTruss"
                 style="?buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/dummy_button" />
-        </LinearLayout>
-    </FrameLayout>
+                android:text="@string/button_truss" />
 
-</FrameLayout>
+            <Button
+                android:id="@+id/buttonCatch"
+                style="?buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button_catch" />
+
+            <Button
+                android:id="@+id/buttonScore"
+                style="?buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button_score" />
+
+            <Button
+                android:id="@+id/buttonDefense"
+                style="?buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/button_defense" />
+        </LinearLayout>
+        
+    </FrameLayout>
+    
+</RelativeLayout>

@@ -1,9 +1,11 @@
 package com.vandenrobotics.functionfirst.adapter;
 
-import com.vandenrobotics.functionfirst.*;
 import com.vandenrobotics.functionfirst.model.AutoData;
 import com.vandenrobotics.functionfirst.model.TeleData;
 import com.vandenrobotics.functionfirst.model.PostData;
+import com.vandenrobotics.functionfirst.robotpi.AutoFragment;
+import com.vandenrobotics.functionfirst.robotpi.PostFragment;
+import com.vandenrobotics.functionfirst.robotpi.TeleFragment;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;

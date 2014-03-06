@@ -1,4 +1,4 @@
-package com.vandenrobotics.functionfirst;
+package com.vandenrobotics.functionfirst.robotpi;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.NumberPicker;
 
+import com.vandenrobotics.functionfirst.R;
 import com.vandenrobotics.functionfirst.model.AutoData;
 
 public class AutoFragment extends Fragment {

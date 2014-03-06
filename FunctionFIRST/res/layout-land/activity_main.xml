@@ -52,12 +52,21 @@
         android:layout_below="@+id/seasonText"
         android:onClick="goTo_scoutActivity"
         android:text="@string/button_scout" />
+    
+    <Button
+        android:id="@+id/stratButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/scoutButton"
+        android:text="@string/button_stratMats"
+        android:onClick="goTo_coachActivity" />
 
     <Button
         android:id="@+id/aboutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scoutButton"
+        android:layout_below="@+id/stratButton"
         android:layout_centerHorizontal="true"
         android:onClick="showAbout"
         android:text="@string/button_about" />

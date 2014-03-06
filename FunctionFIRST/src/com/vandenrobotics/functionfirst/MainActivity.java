@@ -1,5 +1,8 @@
 package com.vandenrobotics.functionfirst;
 
+import com.vandenrobotics.functionfirst.robotpi.ScoutActivity;
+import com.vandenrobotics.functionfirst.ussfrc.CoachActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,14 +32,24 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
+    public void goTo_coachActivity(View view)
+    {
+    	Intent intent = new Intent(this, CoachActivity.class);
+    	startActivity(intent);
+    }
+    
     public void showAbout(View view)
     {
     	new AlertDialog.Builder(this)
-    		.setTitle("RobotPI " + getResources().getString(R.string.version_number))
-    		.setMessage("Robotics Private Investigator (RobotPI) is designed by FRC Team 701 as an electronic alternative to scouting.\n" +
-    				"The scouting application records both objective and subjective data about each individual team at an FRC event. \n"
-    				+ "It is used to compare teams for alliance selection as well as predict match outcomes. \n"
-    				+ "Coded and Designed by Joseph A. Lewis from FRC Team 701")
+    		.setTitle("Function FIRST " + getResources().getString(R.string.version_number))
+    		.setMessage("Function FIRST: RobotPI (Robotics Private Investigator) is designed as an electronic alternative to scouting.\n" 
+    				+ "The scouting application records objective data about each individual team at an FRC event. \n"
+    				+ "It is used in conjunction with a custom database (coming soon) to prepare a team list for "
+    				+ "alliance selection and predict match strategies. \n\n"
+    				+ "Function FIRST: USS FRC (Unitary Strategy Solution) is designed as way to facilitate strategy development between alliance partners.\n"
+    				+ "By drawing out strategies, drive coaches can increase their odds of winning and guarantee alliance partner cooperation.  "
+    				+ "Often times having a strategy drawn and clearly depicted can be the difference between winning and losing a match.\n\n"
+    				+ "App coded and designed by Joseph A. Lewis from FRC Team 701")
     		.show();
     }
     

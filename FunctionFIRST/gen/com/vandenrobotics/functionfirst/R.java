@@ -189,135 +189,145 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int white_grid=0x7f02000b;
     }
     public static final class id {
-        public static final int LinearLayoutAuto=0x7f090017;
-        public static final int RadioSeekBars=0x7f090015;
-        public static final int aboutButton=0x7f090005;
-        public static final int action_go_to_match=0x7f09003b;
-        public static final int action_set_device=0x7f09003c;
-        public static final int action_settings=0x7f09003a;
-        public static final int autoGoalieZone=0x7f09001f;
-        public static final int autoHadAuto=0x7f090016;
-        public static final int autoHighScore=0x7f090019;
-        public static final int autoHotScore=0x7f09001d;
-        public static final int autoLowScore=0x7f09001b;
-        public static final int autoMobilityBonus=0x7f09001e;
-        public static final int buttonLastCycle=0x7f09000d;
-        public static final int buttonNextCycle=0x7f09000e;
-        public static final int buttonNextMatch=0x7f09002a;
-        public static final int buttonUndo=0x7f090013;
-        public static final int cycleGrid=0x7f09000b;
-        public static final int cycleLayout=0x7f090014;
-        public static final int developerText=0x7f090001;
-        public static final int gridBox=0x7f090012;
-        public static final int initDeviceNumber=0x7f09000a;
-        public static final int initMatchNumber=0x7f090009;
-        public static final int initTeamNumber=0x7f090008;
-        public static final int linearLayout5=0x7f090020;
-        public static final int linearLayout6=0x7f090023;
-        public static final int linearLayout7=0x7f090026;
-        public static final int pager=0x7f090006;
-        public static final int pager_title_strip=0x7f090007;
-        public static final int postBroken=0x7f090025;
-        public static final int postDefensive=0x7f090029;
-        public static final int postDisabled=0x7f090024;
-        public static final int postRedCard=0x7f090028;
-        public static final int postRegFouls=0x7f090021;
-        public static final int postTechFouls=0x7f090022;
-        public static final int postYellowCard=0x7f090027;
-        public static final int reviewCatchScores=0x7f09002f;
-        public static final int reviewCycles=0x7f09002b;
-        public static final int reviewHighScores=0x7f09002c;
-        public static final int reviewLowScores=0x7f09002d;
-        public static final int reviewTrussScores=0x7f09002e;
-        public static final int scoutButton=0x7f090004;
-        public static final int seasonText=0x7f090003;
-        public static final int seekBarLayout=0x7f090030;
-        public static final int seekBarTitlesLayout=0x7f090033;
-        public static final int switchGoals=0x7f090031;
-        public static final int switchTC=0x7f090032;
-        public static final int textView1=0x7f090018;
-        public static final int textView2=0x7f09001a;
-        public static final int textView3=0x7f09001c;
-        public static final int titleCycleGrid=0x7f09000c;
-        public static final int titlePartner1=0x7f090010;
-        public static final int titlePartner2=0x7f090011;
-        public static final int titleSBCatch=0x7f090039;
-        public static final int titleSBHighGoal=0x7f090036;
-        public static final int titleSBLowGoal=0x7f090034;
-        public static final int titleSBNoneGoal=0x7f090035;
-        public static final int titleSBNoneTC=0x7f090038;
-        public static final int titleSBTruss=0x7f090037;
-        public static final int titleTeam=0x7f09000f;
-        public static final int titleText=0x7f090002;
-        public static final int versionText=0x7f090000;
+        public static final int LinearLayoutAuto=0x7f09001b;
+        public static final int RadioSeekBars=0x7f090019;
+        public static final int aboutButton=0x7f090008;
+        public static final int action_go_to_match=0x7f09003f;
+        public static final int action_set_device=0x7f090040;
+        public static final int action_settings=0x7f09003e;
+        public static final int autoGoalieZone=0x7f090023;
+        public static final int autoHadAuto=0x7f09001a;
+        public static final int autoHighScore=0x7f09001d;
+        public static final int autoHotScore=0x7f090021;
+        public static final int autoLowScore=0x7f09001f;
+        public static final int autoMobilityBonus=0x7f090022;
+        public static final int buttonLastCycle=0x7f090011;
+        public static final int buttonNextCycle=0x7f090012;
+        public static final int buttonNextMatch=0x7f09002e;
+        public static final int buttonUndo=0x7f090017;
+        public static final int cycleGrid=0x7f09000f;
+        public static final int cycleLayout=0x7f090018;
+        public static final int developerText=0x7f090004;
+        public static final int dummy_button=0x7f090002;
+        public static final int fullscreen_content=0x7f090000;
+        public static final int fullscreen_content_controls=0x7f090001;
+        public static final int gridBox=0x7f090016;
+        public static final int initDeviceNumber=0x7f09000e;
+        public static final int initMatchNumber=0x7f09000d;
+        public static final int initTeamNumber=0x7f09000c;
+        public static final int linearLayout5=0x7f090024;
+        public static final int linearLayout6=0x7f090027;
+        public static final int linearLayout7=0x7f09002a;
+        public static final int pager=0x7f09000a;
+        public static final int pager_title_strip=0x7f09000b;
+        public static final int postBroken=0x7f090029;
+        public static final int postDefensive=0x7f09002d;
+        public static final int postDisabled=0x7f090028;
+        public static final int postRedCard=0x7f09002c;
+        public static final int postRegFouls=0x7f090025;
+        public static final int postTechFouls=0x7f090026;
+        public static final int postYellowCard=0x7f09002b;
+        public static final int reviewCatchScores=0x7f090033;
+        public static final int reviewCycles=0x7f09002f;
+        public static final int reviewHighScores=0x7f090030;
+        public static final int reviewLowScores=0x7f090031;
+        public static final int reviewTrussScores=0x7f090032;
+        public static final int scoutButton=0x7f090007;
+        public static final int seasonText=0x7f090006;
+        public static final int seekBarLayout=0x7f090034;
+        public static final int seekBarTitlesLayout=0x7f090037;
+        public static final int stratButton=0x7f090009;
+        public static final int switchGoals=0x7f090035;
+        public static final int switchTC=0x7f090036;
+        public static final int textView1=0x7f09001c;
+        public static final int textView2=0x7f09001e;
+        public static final int textView3=0x7f090020;
+        public static final int titleCycleGrid=0x7f090010;
+        public static final int titlePartner1=0x7f090014;
+        public static final int titlePartner2=0x7f090015;
+        public static final int titleSBCatch=0x7f09003d;
+        public static final int titleSBHighGoal=0x7f09003a;
+        public static final int titleSBLowGoal=0x7f090038;
+        public static final int titleSBNoneGoal=0x7f090039;
+        public static final int titleSBNoneTC=0x7f09003c;
+        public static final int titleSBTruss=0x7f09003b;
+        public static final int titleTeam=0x7f090013;
+        public static final int titleText=0x7f090005;
+        public static final int versionText=0x7f090003;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_match=0x7f030001;
-        public static final int activity_scout=0x7f030002;
-        public static final int cycle_grid=0x7f030003;
-        public static final int cycle_layout=0x7f030004;
-        public static final int fragment_scout_auto=0x7f030005;
-        public static final int fragment_scout_post=0x7f030006;
-        public static final int fragment_scout_tele=0x7f030007;
-        public static final int radio_switch=0x7f030008;
+        public static final int activity_coach=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_match=0x7f030002;
+        public static final int activity_scout=0x7f030003;
+        public static final int cycle_grid=0x7f030004;
+        public static final int cycle_layout=0x7f030005;
+        public static final int fragment_scout_auto=0x7f030006;
+        public static final int fragment_scout_post=0x7f030007;
+        public static final int fragment_scout_tele=0x7f030008;
+        public static final int radio_switch=0x7f030009;
     }
     public static final class menu {
         public static final int main=0x7f080000;
         public static final int scout=0x7f080001;
     }
     public static final class string {
-        public static final int accept=0x7f06002c;
-        public static final int action_go_to_match=0x7f060002;
-        public static final int action_set_device=0x7f060003;
-        public static final int action_settings=0x7f060004;
+        public static final int accept=0x7f06002e;
+        public static final int action_go_to_match=0x7f060003;
+        public static final int action_set_device=0x7f060004;
+        public static final int action_settings=0x7f060005;
         public static final int app_name=0x7f060000;
-        public static final int button_about=0x7f06000d;
-        public static final int button_finish=0x7f060010;
-        public static final int button_nextMatch=0x7f06000e;
-        public static final int button_scout=0x7f06000c;
-        public static final int button_undo=0x7f06000f;
-        public static final int cancel=0x7f06002d;
-        public static final int check_broken=0x7f060014;
-        public static final int check_defensive=0x7f060018;
-        public static final int check_disabled=0x7f060015;
-        public static final int check_goalieZone=0x7f060013;
-        public static final int check_hadAuto=0x7f060011;
-        public static final int check_mobilityBonus=0x7f060012;
-        public static final int check_redCard=0x7f060017;
-        public static final int check_yellowCard=0x7f060016;
-        public static final int device_number=0x7f06000a;
-        public static final int match_number=0x7f06000b;
-        public static final int radio_catch=0x7f06001a;
-        public static final int radio_highGoal=0x7f06001c;
-        public static final int radio_lowGoal=0x7f06001b;
-        public static final int radio_none=0x7f06001d;
-        public static final int radio_truss=0x7f060019;
-        public static final int team_number=0x7f060009;
+        public static final int button_about=0x7f06000f;
+        public static final int button_finish=0x7f060012;
+        public static final int button_nextMatch=0x7f060010;
+        public static final int button_scout=0x7f06000d;
+        public static final int button_stratMats=0x7f06000e;
+        public static final int button_undo=0x7f060011;
+        public static final int cancel=0x7f06002f;
+        public static final int check_broken=0x7f060016;
+        public static final int check_defensive=0x7f06001a;
+        public static final int check_disabled=0x7f060017;
+        public static final int check_goalieZone=0x7f060015;
+        public static final int check_hadAuto=0x7f060013;
+        public static final int check_mobilityBonus=0x7f060014;
+        public static final int check_redCard=0x7f060019;
+        public static final int check_yellowCard=0x7f060018;
+        public static final int device_number=0x7f06000b;
+        public static final int dummy_button=0x7f060030;
+        public static final int dummy_content=0x7f060031;
+        public static final int match_number=0x7f06000c;
+        public static final int radio_catch=0x7f06001c;
+        public static final int radio_highGoal=0x7f06001e;
+        public static final int radio_lowGoal=0x7f06001d;
+        public static final int radio_none=0x7f06001f;
+        public static final int radio_truss=0x7f06001b;
+        public static final int team_number=0x7f06000a;
+        public static final int title_activity_coach=0x7f060002;
         public static final int title_activity_scout=0x7f060001;
-        public static final int title_app=0x7f060005;
-        public static final int title_cycleGrid=0x7f060021;
-        public static final int title_developer=0x7f060007;
-        public static final int title_highScore=0x7f06001e;
-        public static final int title_hotScore=0x7f060020;
-        public static final int title_lowScore=0x7f06001f;
-        public static final int title_numberCatchScores=0x7f060028;
-        public static final int title_numberCycles=0x7f060024;
-        public static final int title_numberHighScores=0x7f060025;
-        public static final int title_numberLowScores=0x7f060026;
-        public static final int title_numberTrussScores=0x7f060027;
-        public static final int title_partner=0x7f060022;
-        public static final int title_possessionTime=0x7f060029;
-        public static final int title_regFouls=0x7f06002a;
-        public static final int title_season=0x7f060006;
-        public static final int title_team=0x7f060023;
-        public static final int title_techFouls=0x7f06002b;
-        public static final int version_number=0x7f060008;
+        public static final int title_app=0x7f060006;
+        public static final int title_cycleGrid=0x7f060023;
+        public static final int title_developer=0x7f060008;
+        public static final int title_highScore=0x7f060020;
+        public static final int title_hotScore=0x7f060022;
+        public static final int title_lowScore=0x7f060021;
+        public static final int title_numberCatchScores=0x7f06002a;
+        public static final int title_numberCycles=0x7f060026;
+        public static final int title_numberHighScores=0x7f060027;
+        public static final int title_numberLowScores=0x7f060028;
+        public static final int title_numberTrussScores=0x7f060029;
+        public static final int title_partner=0x7f060024;
+        public static final int title_possessionTime=0x7f06002b;
+        public static final int title_regFouls=0x7f06002c;
+        public static final int title_season=0x7f060007;
+        public static final int title_team=0x7f060025;
+        public static final int title_techFouls=0x7f06002d;
+        public static final int version_number=0x7f060009;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
 
     
 
@@ -325,10 +335,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
 
+
         
 
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
+
 
     
  API 11 theme customizations can go here. 
@@ -344,6 +356,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        public static final int ButtonBar=0x7f070003;
+        public static final int ButtonBarButton=0x7f070004;
+        public static final int FullscreenActionBarStyle=0x7f070005;
+        public static final int FullscreenTheme=0x7f070002;
     }
     public static final class styleable {
         /** 

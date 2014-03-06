@@ -1,4 +1,4 @@
-package com.vandenrobotics.functionfirst;
+package com.vandenrobotics.functionfirst.robotpi;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.vandenrobotics.functionfirst.R;
 import com.vandenrobotics.functionfirst.model.CycleData;
 import com.vandenrobotics.functionfirst.model.MatchData;
 import com.vandenrobotics.functionfirst.model.TeamList;

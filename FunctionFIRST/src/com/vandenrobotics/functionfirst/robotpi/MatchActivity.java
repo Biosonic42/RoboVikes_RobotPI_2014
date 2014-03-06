@@ -1,5 +1,6 @@
-package com.vandenrobotics.functionfirst;
+package com.vandenrobotics.functionfirst.robotpi;
 
+import com.vandenrobotics.functionfirst.R;
 import com.vandenrobotics.functionfirst.adapter.TabsPagerAdapter;
 import com.vandenrobotics.functionfirst.adapter.TabsViewPager;
 import com.vandenrobotics.functionfirst.model.MatchData;

@@ -98,15 +98,6 @@
         android:textSize="24sp" />
 
     <CheckBox
-        android:id="@+id/autoHighHot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/autoHighScore"
-        android:text="@string/check_autoHot"
-        android:textSize="24sp" />
-
-    <CheckBox
         android:id="@+id/autoLowHot1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -117,11 +108,20 @@
         android:textSize="24sp" />
 
     <CheckBox
+        android:id="@+id/autoHighHot1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/autoHighScore"
+        android:layout_toRightOf="@+id/autoHighScore"
+        android:text="@string/check_autoHot"
+        android:textSize="24sp" />
+
+    <CheckBox
         android:id="@+id/autoMobilityBonus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/autoHighScore"
-        android:layout_below="@+id/autoHighHot3"
+        android:layout_below="@+id/autoHighScore"
         android:text="@string/check_mobilityBonus"
         android:textSize="24sp" />
 

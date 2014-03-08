@@ -1,5 +1,6 @@
-package com.vandenrobotics.functionfirst;
+package com.vandenrobotics.functionfirst.robotpi;
 
+import com.vandenrobotics.functionfirst.R;
 import com.vandenrobotics.functionfirst.model.PostData;
 
 import android.os.Bundle;
@@ -12,11 +13,12 @@ import android.widget.NumberPicker;
 
 public class PostFragment extends Fragment {
 	
-	private CheckBox postBroken;
-	private CheckBox postDisabled;
+	private CheckBox postDefensive;
+	private CheckBox postAggressive;
 	private CheckBox postYellowCard;
 	private CheckBox postRedCard;
-	private CheckBox postDefensive;
+	private CheckBox postDisabled;
+	private CheckBox postNoShow;
 	
 	private NumberPicker postRegFouls;
 	private NumberPicker postTechFouls;
@@ -80,11 +82,13 @@ public class PostFragment extends Fragment {
 	}
 	
 	private void loadData(final PostData postData){
+		
 		postDisabled.setChecked(postData.disabled);
-		postBroken.setChecked(postData.broken);
 		postYellowCard.setChecked(postData.yellowCard);
 		postRedCard.setChecked(postData.redCard);
 		postDefensive.setChecked(postData.defensive);
+		postAggressive.setChecked(postData.aggressive);
+		postNoShow.setChecked(postData.noShow);
 		
 		postRegFouls.setValue(postData.regFouls);
 		postTechFouls.setValue(postData.techFouls);
@@ -93,10 +97,11 @@ public class PostFragment extends Fragment {
 	private void saveData(PostData postData){
 		if(viewsAssigned){
 			postData.disabled = postDisabled.isChecked();
-			postData.broken = postBroken.isChecked();
+			postData.noShow = postNoShow.isChecked();
 			postData.yellowCard = postYellowCard.isChecked();
 			postData.redCard = postRedCard.isChecked();
 			postData.defensive = postDefensive.isChecked();
+			postData.aggressive = postAggressive.isChecked();
 			postData.regFouls = postRegFouls.getValue();
 			postData.techFouls = postTechFouls.getValue();
 		}
@@ -104,16 +109,17 @@ public class PostFragment extends Fragment {
 	
 	private void assignViews(View view){
 		postDisabled = (CheckBox)view.findViewById(R.id.postDisabled);
-		postBroken = (CheckBox)view.findViewById(R.id.postBroken);
+		postNoShow = (CheckBox)view.findViewById(R.id.postNoShow);
+		postAggressive = (CheckBox)view.findViewById(R.id.postAggressive);
 		postYellowCard = (CheckBox)view.findViewById(R.id.postYellowCard);
 		postRedCard = (CheckBox)view.findViewById(R.id.postRedCard);
 		postDefensive = (CheckBox)view.findViewById(R.id.postDefensive);
 		postRegFouls = (NumberPicker)view.findViewById(R.id.postRegFouls);
 		postRegFouls.setMinValue(0);
-		postRegFouls.setMaxValue(20);
+		postRegFouls.setMaxValue(9);
 		postTechFouls = (NumberPicker)view.findViewById(R.id.postTechFouls);
 		postTechFouls.setMinValue(0);
-		postTechFouls.setMaxValue(20);
+		postTechFouls.setMaxValue(9);
 		viewsAssigned=true;
 	}
 }

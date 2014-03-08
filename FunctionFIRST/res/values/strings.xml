@@ -19,7 +19,7 @@
     <string name="check_hadAuto">Had Auto?</string>
     <string name="check_autoHot">Hot Score</string><string name="check_mobilityBonus">Obtained Mobility Bonus?</string>
     <string name="check_goalieZone">Robot Started in Goalie Zone?</string>
-    <string name="check_broken">Broke Down During Match?</string>
+    <string name="check_noShow">No Show?</string>
     <string name="check_disabled">Disabled During Match?</string>
     <string name="check_yellowCard">Received Yellow Card?</string>
     <string name="check_redCard">Received Red Card?</string>
@@ -38,6 +38,7 @@
     <string name="title_techFouls">Number of Technical Fouls Incurred</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="check_aggressive">Played Aggressively?</string>
     
     
     

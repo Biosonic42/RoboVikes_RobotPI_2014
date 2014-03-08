@@ -48,14 +48,13 @@ public class AutoData
 		       lowScore+","+tempLH[0]+","+tempLH[1]+","+tempLH[2];
 	}
 	
-	public boolean fromString(String string){
+	public boolean fromString(String[] string){
 		try{
-			String[] dataString = string.split(",");
-			int[] data = new int[dataString.length];
+			int[] data = new int[string.length];
 			
 			try{
 				for(int i = 0; i < data.length; i++)
-					data[i] = Integer.parseInt(dataString[i]);
+					data[i] = Integer.parseInt(string[i]);
 			} catch (NumberFormatException e){
 				e.printStackTrace();
 				return false;
@@ -64,17 +63,17 @@ public class AutoData
 				return false;
 			}
 			
-			hadAuto = (data[0]==1)? true : false;
-			mobilityBonus = (data[1]==1)? true : false;
-			goalieZone = (data[2]==1)? true : false;
+			hadAuto = (data[0]==1);
+			mobilityBonus = (data[1]==1);
+			goalieZone = (data[2]==1);
 			highScore = data[3];
-			highHot[0] = (data[4]==1)? true : false;
-			highHot[1] = (data[5]==1)? true : false;
-			highHot[2] = (data[6]==1)? true : false;
+			highHot[0] = (data[4]==1);
+			highHot[1] = (data[5]==1);
+			highHot[2] = (data[6]==1);
 			lowScore = data[7];
-			lowHot[0] = (data[8]==1)? true : false;
-			lowHot[1] = (data[9]==1)? true : false;
-			lowHot[2] = (data[10]==1)? true : false;
+			lowHot[0] = (data[8]==1);
+			lowHot[1] = (data[9]==1);
+			lowHot[2] = (data[10]==1);
 			
 		} catch (IndexOutOfBoundsException e){
 			e.printStackTrace();

@@ -3,16 +3,25 @@ package com.vandenrobotics.functionfirst.robotpi;
 import java.util.ArrayList;
 
 import com.vandenrobotics.functionfirst.R;
+import com.vandenrobotics.functionfirst.model.HotSpot;
 import com.vandenrobotics.functionfirst.model.TeleData;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TeleFragment extends Fragment {
@@ -29,9 +38,13 @@ public class TeleFragment extends Fragment {
 	private Button buttonGoal;
 	private Button buttonGiveAssist;
 	private Button buttonReceiveAssist;
+	private ImageView fieldDiagram;
 	
 	private boolean recording = false;
 	private ArrayList<Double> intakeTimes = new ArrayList<Double>();
+	private ArrayList<HotSpot> hotSpots = new ArrayList<HotSpot>();
+	private ArrayList<HotSpot> backOrder = new ArrayList<HotSpot>();
+	private int hSpotType = 0;
 	
 	private boolean viewsAssigned = false;
 	
@@ -76,6 +89,7 @@ public class TeleFragment extends Fragment {
 		{
 			assignViews(getView());
 			loadData(mTeleData);
+			drawPoints();
 			
 		}
 		else if(!isVisibleToUser)
@@ -94,6 +108,7 @@ public class TeleFragment extends Fragment {
 	private void loadData(final TeleData teleData){
 		intakeTimes = teleData.intakeTimes;
 		lowScore.setText(""+teleData.lowScore);
+		hotSpots = teleData.hotSpots;
 	}
 	
 	private void saveData(TeleData teleData){
@@ -107,6 +122,7 @@ public class TeleFragment extends Fragment {
 				lowScoreValue = 0;
 			}
 			teleData.lowScore = lowScoreValue;
+			teleData.hotSpots = hotSpots;
 		}
 	}
 	
@@ -124,7 +140,8 @@ public class TeleFragment extends Fragment {
 			buttonGoal = (Button)view.findViewById(R.id.buttonScore);
 			buttonGiveAssist = (Button)view.findViewById(R.id.buttonGiveAssist);
 			buttonReceiveAssist = (Button)view.findViewById(R.id.buttonReceiveAssist);
-			
+			fieldDiagram = (ImageView)view.findViewById(R.id.fieldDiagram);
+						
 			if(recording)
 				buttonRecord.setText(getResources().getString(R.string.button_recordStop));
 			else
@@ -136,20 +153,28 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					//undo last drawing action on Canvas
-					
+					try{
+						backOrder.add(hotSpots.get(hotSpots.size()-1));
+						hotSpots.remove(hotSpots.size()-1);	
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+					}
+					drawPoints();
 				}
-				
 			});
 			
 			buttonRedo.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
-					//redo last undone drawing action (up to x number of actions)
-					
+					try{
+						hotSpots.add(backOrder.get(backOrder.size()-1));
+						backOrder.remove(backOrder.size()-1);
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+					}
+					drawPoints();
 				}
-				
 			});
 			
 			buttonRecord.setOnClickListener(new View.OnClickListener() {
@@ -247,6 +272,7 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
+					hSpotType=1;
 				}
 			});
 			
@@ -254,6 +280,7 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
+					hSpotType=2;
 				}
 			});
 			
@@ -261,6 +288,7 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
+					hSpotType=3;
 				}
 			});
 			
@@ -268,6 +296,7 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
+					hSpotType=4;
 				}
 			});
 			
@@ -275,13 +304,81 @@ public class TeleFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
+					hSpotType=5;
 				}
 			});
 			
+			fieldDiagram.setOnTouchListener(new View.OnTouchListener(){
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					System.out.println("TOUCH! " + hSpotType);
+					switch(event.getAction()){
+					case MotionEvent.ACTION_DOWN:
+						PointF point = new PointF(event.getX(),event.getY());
+						if(hSpotType!=0){
+							double x = point.x / (double)fieldDiagram.getWidth();
+							double y=  point.y / (double)fieldDiagram.getHeight();
+							HotSpot hotSpot = new HotSpot(hSpotType,x,y);
+							hotSpots.add(hotSpot);
+							backOrder.clear();
+						}
+						drawPoints();
+					}
+					return true;
+				}
+				
+			});
 			viewsAssigned=true;
 		} catch (Exception e){
 			e.printStackTrace();
 			viewsAssigned=false;
 		}
 	}
+	
+	private void drawPoints(){
+		Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.field_layout_tele);
+		Bitmap bmp = Bitmap.createScaledBitmap(background, fieldDiagram.getWidth(),fieldDiagram.getHeight(),true);
+		Canvas canvas = new Canvas(bmp);
+		
+		Paint paint = new Paint();
+		paint.setStyle(Style.FILL);
+		for(HotSpot h : hotSpots){
+			int color = getResources().getColor(R.color.Transparent);
+			String text = "";
+			switch(h.type){
+			case 1:
+				color = getResources().getColor(R.color.Blue);
+				text = "T";
+				break;
+			case 2:
+				color = getResources().getColor(R.color.Red);
+				text = "C";
+				break;
+			case 3:
+				color = getResources().getColor(R.color.Green);
+				text = "G";
+				break;
+			case 4:
+				color = getResources().getColor(R.color.Pink);
+				text = "GA";
+				break;
+			case 5:
+				color = getResources().getColor(R.color.Purple);
+				text = "RA";
+				break;
+			default:
+				color = getResources().getColor(R.color.Black);
+				text = "";
+				break;
+			}
+			paint.setColor(color);
+			float x = (float) ((float)fieldDiagram.getWidth()*h.x);
+			float y = (float) ((float)fieldDiagram.getHeight()*h.y);
+			canvas.drawCircle(x, y, 10, paint);
+			canvas.drawText(text, x-15, y-10, paint);
+		}
+		fieldDiagram.setImageBitmap(bmp);
+	}
+	
 }

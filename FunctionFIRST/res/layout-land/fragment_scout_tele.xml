@@ -139,12 +139,12 @@
 
     <ImageView
         android:id="@+id/fieldDiagram"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/descFieldDiagram"
         android:keepScreenOn="true"
-        android:src="@drawable/field_layout" />
+        android:src="@drawable/field_layout_tele" />
 
 </RelativeLayout>

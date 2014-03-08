@@ -74,14 +74,19 @@ public class TeleData
 			}
 			intakeTimes = intakes;
 			
+			lowScore = (int)data[index];
+			index += 1;
+			
 			int numHotSpots = (int)data[index];
 			index += 1;
 			ArrayList<HotSpot> hSpots = new ArrayList<HotSpot>();
-			for(int i = 0; i < numHotSpots && numHotSpots != 0; i++){
-				HotSpot hotSpot = new HotSpot((int)data[index],data[index+1],data[index+2]);
-				index+=3;
-				hSpots.add(hotSpot);
-			}
+			//if(numHotSpots != 0){
+				for(int i = 0; i < numHotSpots; i++){
+					HotSpot hotSpot = new HotSpot((int)data[index],data[index+1],data[index+2]);
+					index+=3;
+					hSpots.add(hotSpot);
+				}
+			//}
 			hotSpots = hSpots;
 			
 			

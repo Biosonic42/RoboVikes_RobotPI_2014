@@ -178,7 +178,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int arrow_button=0x7f020000;
         public static final int blue_grid=0x7f020001;
         public static final int border=0x7f020002;
-        public static final int field_layout=0x7f020003;
+        public static final int field_layout_tele=0x7f020003;
         public static final int grid_box=0x7f020004;
         public static final int ic_launcher=0x7f020005;
         public static final int progress_bar=0x7f020006;

@@ -82,12 +82,15 @@ public class ScoutActivity extends Activity {
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
-			int match = 0;
 			while((line=br.readLine())!=null){
-				mMD[match] = new MatchData();
-				System.out.print(mMD[match].fromString(line));
-				System.out.println("\n\r");
-				match = match+1;
+				try{
+					int match = Integer.parseInt(line.substring(0,1))-1;
+					mMD[match] = new MatchData();
+					System.out.print(mMD[match].fromString(line));
+					System.out.println("\n\r");
+				} catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 			br.close();
 			f.close();
@@ -111,9 +114,7 @@ public class ScoutActivity extends Activity {
 			for(int i=0;
 				i<mMatchResults.length; i++) {
 					if(mMatchResults[i]!=null)
-						pw.println(mMatchResults[i].toString()+"\n");
-					else
-						break;
+						pw.println(mMatchResults[i].toString()+"\r\n");
 			}
 			pw.flush();
 			pw.close();

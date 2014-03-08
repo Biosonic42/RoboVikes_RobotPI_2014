@@ -18,6 +18,7 @@ public class InitData {
 	
 	public boolean fromString(String string){
 		try{
+			System.out.println("INITDATA: " + string);
 			String[] dataString = string.split(",");
 			int[] data = new int[dataString.length];
 			

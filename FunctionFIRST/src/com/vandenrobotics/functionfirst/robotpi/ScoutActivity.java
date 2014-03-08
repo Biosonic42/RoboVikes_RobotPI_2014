@@ -76,41 +76,19 @@ public class ScoutActivity extends Activity {
 		File root = Environment.getExternalStorageDirectory();
 		File dir = new File(root.getAbsolutePath()+ "/ScoutData/device-" + deviceNumber);
 		dir.mkdirs();
-		System.out.println("DEVICE NUMBER: " + deviceNumber);
 		
 		File file = new File(dir,"data.txt");
 		try{
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
-			while ((line = br.readLine()) != null){
-				String[] dataString = line.split(",");
-
-				int[] data = new int[dataString.length];
-				
-				try {
-					for(int i = 0; i < data.length; i++){
-						data[i] = Integer.parseInt(dataString[i]); 
-					}
-					int index = 0;
-					int match = data[index]-1;
-
-					mMD[match] = new MatchData();
-					
-					// initData
-					mMD[match].initData.matchNumber = data[index];
-					index+=1;
-					mMD[match].initData.teamNumber = data[index];
-					index+=1;
-					mMD[match].initData.allianceColor = data[index];
-					index+=1;					
-					
-				} catch (NumberFormatException e){
-					e.printStackTrace();
-				} catch (IndexOutOfBoundsException e){
-					e.printStackTrace();
-				}
-			} 
+			int match = 0;
+			while((line=br.readLine())!=null){
+				mMD[match] = new MatchData();
+				System.out.print(mMD[match].fromString(line));
+				System.out.println("\n\r");
+				match = match+1;
+			}
 			br.close();
 			f.close();
 		} catch (FileNotFoundException e){
@@ -133,7 +111,9 @@ public class ScoutActivity extends Activity {
 			for(int i=0;
 				i<mMatchResults.length; i++) {
 					if(mMatchResults[i]!=null)
-						pw.println(mMatchResults[i].toString()+"\n\r");
+						pw.println(mMatchResults[i].toString()+"\n");
+					else
+						break;
 			}
 			pw.flush();
 			pw.close();

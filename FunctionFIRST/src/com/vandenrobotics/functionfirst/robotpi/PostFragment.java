@@ -108,18 +108,23 @@ public class PostFragment extends Fragment {
 	}
 	
 	private void assignViews(View view){
-		postDisabled = (CheckBox)view.findViewById(R.id.postDisabled);
-		postNoShow = (CheckBox)view.findViewById(R.id.postNoShow);
-		postAggressive = (CheckBox)view.findViewById(R.id.postAggressive);
-		postYellowCard = (CheckBox)view.findViewById(R.id.postYellowCard);
-		postRedCard = (CheckBox)view.findViewById(R.id.postRedCard);
-		postDefensive = (CheckBox)view.findViewById(R.id.postDefensive);
-		postRegFouls = (NumberPicker)view.findViewById(R.id.postRegFouls);
-		postRegFouls.setMinValue(0);
-		postRegFouls.setMaxValue(9);
-		postTechFouls = (NumberPicker)view.findViewById(R.id.postTechFouls);
-		postTechFouls.setMinValue(0);
-		postTechFouls.setMaxValue(9);
-		viewsAssigned=true;
+		try{
+			postDisabled = (CheckBox)view.findViewById(R.id.postDisabled);
+			postNoShow = (CheckBox)view.findViewById(R.id.postNoShow);
+			postAggressive = (CheckBox)view.findViewById(R.id.postAggressive);
+			postYellowCard = (CheckBox)view.findViewById(R.id.postYellowCard);
+			postRedCard = (CheckBox)view.findViewById(R.id.postRedCard);
+			postDefensive = (CheckBox)view.findViewById(R.id.postDefensive);
+			postRegFouls = (NumberPicker)view.findViewById(R.id.postRegFouls);
+			postRegFouls.setMinValue(0);
+			postRegFouls.setMaxValue(9);
+			postTechFouls = (NumberPicker)view.findViewById(R.id.postTechFouls);
+			postTechFouls.setMinValue(0);
+			postTechFouls.setMaxValue(9);
+			viewsAssigned=true;
+		} catch (Exception e){
+			e.printStackTrace();
+			viewsAssigned=false;
+		}
 	}
 }

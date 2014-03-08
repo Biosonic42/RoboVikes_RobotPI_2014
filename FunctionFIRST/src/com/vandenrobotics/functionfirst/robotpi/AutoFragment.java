@@ -123,82 +123,87 @@ public class AutoFragment extends Fragment {
 	}
 	
 	private void assignViews(View view){
-		autoHadAuto = (CheckBox)view.findViewById(R.id.autoHadAuto);
-		autoMobilityBonus = (CheckBox)view.findViewById(R.id.autoMobilityBonus);
-		autoGoalieZone = (CheckBox)view.findViewById(R.id.autoGoalieZone);
-		
-		autoHighScore = (NumberPicker)view.findViewById(R.id.autoHighScore);
-		autoHighScore.setMinValue(0);
-		autoHighScore.setMaxValue(3);
-		autoLowScore = (NumberPicker)view.findViewById(R.id.autoLowScore);
-		autoLowScore.setMinValue(0);
-		autoLowScore.setMaxValue(3);
-		
-		autoHighHot[0] = (CheckBox)view.findViewById(R.id.autoHighHot1);
-		autoHighHot[1] = (CheckBox)view.findViewById(R.id.autoHighHot2);
-		autoHighHot[2] = (CheckBox)view.findViewById(R.id.autoHighHot3);
-		
-		autoLowHot[0] = (CheckBox)view.findViewById(R.id.autoLowHot1);
-		autoLowHot[1] = (CheckBox)view.findViewById(R.id.autoLowHot2);
-		autoLowHot[2] = (CheckBox)view.findViewById(R.id.autoLowHot3);
-		
-		autoHadAuto.setOnClickListener(new View.OnClickListener() {
+		try{
+			autoHadAuto = (CheckBox)view.findViewById(R.id.autoHadAuto);
+			autoMobilityBonus = (CheckBox)view.findViewById(R.id.autoMobilityBonus);
+			autoGoalieZone = (CheckBox)view.findViewById(R.id.autoGoalieZone);
 			
-			@Override
-			public void onClick(View v) {
-				if(autoHadAuto.isChecked())
-					enableAutoViews();
-				else
-					disableAutoViews();
+			autoHighScore = (NumberPicker)view.findViewById(R.id.autoHighScore);
+			autoHighScore.setMinValue(0);
+			autoHighScore.setMaxValue(3);
+			autoLowScore = (NumberPicker)view.findViewById(R.id.autoLowScore);
+			autoLowScore.setMinValue(0);
+			autoLowScore.setMaxValue(3);
+			
+			autoHighHot[0] = (CheckBox)view.findViewById(R.id.autoHighHot1);
+			autoHighHot[1] = (CheckBox)view.findViewById(R.id.autoHighHot2);
+			autoHighHot[2] = (CheckBox)view.findViewById(R.id.autoHighHot3);
+			
+			autoLowHot[0] = (CheckBox)view.findViewById(R.id.autoLowHot1);
+			autoLowHot[1] = (CheckBox)view.findViewById(R.id.autoLowHot2);
+			autoLowHot[2] = (CheckBox)view.findViewById(R.id.autoLowHot3);
+			
+			autoHadAuto.setOnClickListener(new View.OnClickListener() {
 				
-			}
-		});
+				@Override
+				public void onClick(View v) {
+					if(autoHadAuto.isChecked())
+						enableAutoViews();
+					else
+						disableAutoViews();
+					
+				}
+			});
+			
+			autoHighScore.setOnValueChangedListener(new OnValueChangeListener() {
+	
+				@Override
+				public void onValueChange(NumberPicker arg0, int oldVal, int newVal) {
+					// if oldVal is greater than newVal, change the checkbox value to false
+					if(oldVal>newVal && oldVal != 0)
+						autoHighHot[oldVal-1].setChecked(false);
+					
+					// disable everything that was enabled before
+					for(int i = 0; i < oldVal; i++){
+						autoHighHot[i].setEnabled(false);
+						autoHighHot[i].setTextColor(getResources().getColor(R.color.Gray));
+					}
+					
+					// enable everything that should be enabled now
+					for(int i = 0; i < newVal; i++){
+						autoHighHot[i].setEnabled(true);
+						autoHighHot[i].setTextColor(getResources().getColor(R.color.Black));
+					}
+				}
+			});
+			
+			autoLowScore.setOnValueChangedListener(new OnValueChangeListener() {
+	
+				@Override
+				public void onValueChange(NumberPicker arg0, int oldVal, int newVal) {
+					// if oldVal is greater than newVal, change the checkbox value to false
+					if(oldVal>newVal && oldVal != 0)
+						autoLowHot[oldVal-1].setChecked(false);
+					
+					// disable everything that was enabled before
+					for(int i = 0; i < oldVal; i++){
+						autoLowHot[i].setEnabled(false);
+						autoLowHot[i].setTextColor(getResources().getColor(R.color.Gray));
+					}
+					
+					// enable everything that should be enabled now
+					for(int i = 0; i < newVal; i++){
+						autoLowHot[i].setEnabled(true);
+						autoLowHot[i].setTextColor(getResources().getColor(R.color.Black));
+					}
+				}
+			});
 		
-		autoHighScore.setOnValueChangedListener(new OnValueChangeListener() {
-
-			@Override
-			public void onValueChange(NumberPicker arg0, int oldVal, int newVal) {
-				// if oldVal is greater than newVal, change the checkbox value to false
-				if(oldVal>newVal && oldVal != 0)
-					autoHighHot[oldVal-1].setChecked(false);
-				
-				// disable everything that was enabled before
-				for(int i = 0; i < oldVal; i++){
-					autoHighHot[i].setEnabled(false);
-					autoHighHot[i].setTextColor(getResources().getColor(R.color.Gray));
-				}
-				
-				// enable everything that should be enabled now
-				for(int i = 0; i < newVal; i++){
-					autoHighHot[i].setEnabled(true);
-					autoHighHot[i].setTextColor(getResources().getColor(R.color.Black));
-				}
-			}
-		});
-		
-		autoLowScore.setOnValueChangedListener(new OnValueChangeListener() {
-
-			@Override
-			public void onValueChange(NumberPicker arg0, int oldVal, int newVal) {
-				// if oldVal is greater than newVal, change the checkbox value to false
-				if(oldVal>newVal && oldVal != 0)
-					autoLowHot[oldVal-1].setChecked(false);
-				
-				// disable everything that was enabled before
-				for(int i = 0; i < oldVal; i++){
-					autoLowHot[i].setEnabled(false);
-					autoLowHot[i].setTextColor(getResources().getColor(R.color.Gray));
-				}
-				
-				// enable everything that should be enabled now
-				for(int i = 0; i < newVal; i++){
-					autoLowHot[i].setEnabled(true);
-					autoLowHot[i].setTextColor(getResources().getColor(R.color.Black));
-				}
-			}
-		});
-		
-		viewsAssigned = true;
+			viewsAssigned = true;
+		} catch (Exception e){
+			e.printStackTrace();
+			viewsAssigned = false;
+		}
 	}
 	
 	private void disableAutoViews(){

@@ -43,13 +43,15 @@ public class PostData
 		      +tempDef +","+tempAgg;
 	}
 	
-	public boolean fromString(String[] string){
+	public boolean fromString(String string){
 		try{
-			int[] data = new int[string.length];
+			System.out.println("POSTDATA: " + string);
+			String[] dataString = string.split(",");
+			int[] data = new int[dataString.length];
 			
 			try{
 				for(int i = 0; i < data.length; i++)
-					data[i] = Integer.parseInt(string[i]);
+					data[i] = Integer.parseInt(dataString[i]);
 			} catch (NumberFormatException e){
 				e.printStackTrace();
 				return false;

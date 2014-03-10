@@ -163,6 +163,24 @@ public class TeleFragment extends Fragment {
 				}
 			});
 			
+			buttonUndo.setOnLongClickListener(new View.OnLongClickListener() {
+					
+				@Override
+				public boolean onLongClick(View v) {
+					try{
+						for(int i = hotSpots.size()-1; i > -1; i--){
+							backOrder.add(hotSpots.get(i));
+							hotSpots.remove(i);
+						}
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+						return false;
+					}
+					drawPoints();
+					return true;
+				}
+			});
+			
 			buttonRedo.setOnClickListener(new View.OnClickListener() {
 
 				@Override
@@ -174,6 +192,24 @@ public class TeleFragment extends Fragment {
 						e.printStackTrace();
 					}
 					drawPoints();
+				}
+			});
+			
+			buttonRedo.setOnLongClickListener(new View.OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick(View v) {
+					try{
+						for(int i = backOrder.size()-1; i > -1; i--){
+							hotSpots.add(backOrder.get(i));
+							backOrder.remove(i);
+						}
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+						return false;
+					}
+					drawPoints();
+					return true;
 				}
 			});
 			
@@ -231,7 +267,27 @@ public class TeleFragment extends Fragment {
 						intakeTimes.add(finalTime);
 					}
 				}
+			});
+			
+			buttonRecord.setOnLongClickListener(new View.OnLongClickListener() {
 				
+				@Override
+				public boolean onLongClick(View v) {
+					try{
+						intakeTimes.remove(intakeTimes.size()-1);
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+						return false;
+					}
+					try{
+						double newValue = intakeTimes.get(intakeTimes.size()-1);
+						intakeTime.setText(""+newValue);
+					} catch(IndexOutOfBoundsException e){
+						e.printStackTrace();
+						intakeTime.setText(getResources().getString(R.string.title_intakeTime));
+					}
+					return true;
+				}
 			});
 			
 			buttonLowScoreDown.setOnClickListener(new View.OnClickListener() {
@@ -250,6 +306,16 @@ public class TeleFragment extends Fragment {
 					lowScore.setText(""+newValue);
 				}
 				
+			});
+			
+			buttonLowScoreDown.setOnLongClickListener(new View.OnLongClickListener() {
+				
+				@Override
+				public boolean onLongClick(View v) {
+					int newValue = 0;
+					lowScore.setText(""+newValue);
+					return true;
+				}
 			});
 			
 			buttonLowScoreUp.setOnClickListener(new View.OnClickListener() {
@@ -314,7 +380,7 @@ public class TeleFragment extends Fragment {
 				public boolean onTouch(View v, MotionEvent event) {
 					System.out.println("TOUCH! " + hSpotType);
 					switch(event.getAction()){
-					case MotionEvent.ACTION_DOWN:
+					case MotionEvent.ACTION_UP:
 						PointF point = new PointF(event.getX(),event.getY());
 						if(hSpotType!=0){
 							double x = point.x / (double)fieldDiagram.getWidth();

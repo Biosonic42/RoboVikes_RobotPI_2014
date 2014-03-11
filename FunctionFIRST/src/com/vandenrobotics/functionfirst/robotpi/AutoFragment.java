@@ -3,7 +3,10 @@ package com.vandenrobotics.functionfirst.robotpi;
 import com.vandenrobotics.functionfirst.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -26,6 +29,9 @@ public class AutoFragment extends Fragment {
 	private CheckBox[] autoLowHot = new CheckBox[3];
 	
 	private boolean viewsAssigned = false;
+	
+	private boolean waitLeft = false;
+	private boolean waitRight = false;
 	
 	private AutoData mAutoData;
 	
@@ -237,5 +243,125 @@ public class AutoFragment extends Fragment {
 			autoLowHot[i].setEnabled(true);
 			autoLowHot[i].setTextColor(getResources().getColor(R.color.Black));
 		}
+	}
+	
+	public boolean onMyKeyDown(int keyCode){
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_BUTTON_Y:
+			autoHadAuto.toggle();
+			if(autoHadAuto.isChecked())
+				enableAutoViews();
+			else
+				disableAutoViews();
+			return true;
+		case KeyEvent.KEYCODE_BUTTON_X:
+			if(autoHadAuto.isChecked())
+				autoMobilityBonus.toggle();
+			return true;
+		case KeyEvent.KEYCODE_BUTTON_B:
+			autoGoalieZone.toggle();
+			return true;
+		case KeyEvent.KEYCODE_BUTTON_THUMBL:
+			if(autoHadAuto.isChecked()){
+				try {
+					autoHighHot[autoHighScore.getValue()-1].toggle();
+				} catch (IndexOutOfBoundsException e){
+					e.printStackTrace();
+				}
+			}
+			return true;
+		case KeyEvent.KEYCODE_BUTTON_THUMBR:
+			if(autoHadAuto.isChecked()){
+				try {
+					autoLowHot[autoLowScore.getValue()-1].toggle();
+				} catch (IndexOutOfBoundsException e){
+					e.printStackTrace();
+				}
+			}
+			return true;
+		default:
+			return true;
+		}
+	}
+	
+	public boolean onMyGenericMotionEvent(MotionEvent event){
+		if(autoHadAuto.isChecked()){
+			if((event.getSource() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK){
+				switch(event.getAction()){
+				case 2: // either joystick, reading off for some reason
+					if(event.getAxisValue(MotionEvent.AXIS_Y)<0.25 &&
+							event.getAxisValue(MotionEvent.AXIS_Y)>-0.25){
+						waitLeft = false;
+					}
+					if(event.getAxisValue(MotionEvent.AXIS_RZ)<0.25 &&
+							event.getAxisValue(MotionEvent.AXIS_RZ)>-0.25){
+						waitRight = false;
+					}
+					
+					int oldVal = autoHighScore.getValue();
+					if(!waitLeft){
+						if(event.getAxisValue(MotionEvent.AXIS_Y)>0.75){
+							autoHighScore.setValue(autoHighScore.getValue()-1);
+							waitLeft = true;
+						}
+						else if(event.getAxisValue(MotionEvent.AXIS_Y)<-0.75){
+							autoHighScore.setValue(autoHighScore.getValue()+1);
+							waitLeft = true;
+						}
+					}
+					
+					int newVal = autoHighScore.getValue();
+					
+					if(oldVal>newVal && oldVal != 0)
+						autoHighHot[oldVal-1].setChecked(false);
+					
+					// disable everything that was enabled before
+					for(int i = 0; i < oldVal; i++){
+						autoHighHot[i].setEnabled(false);
+						autoHighHot[i].setTextColor(getResources().getColor(R.color.Gray));
+					}
+					
+					// enable everything that should be enabled now
+					for(int i = 0; i < newVal; i++){
+						autoHighHot[i].setEnabled(true);
+						autoHighHot[i].setTextColor(getResources().getColor(R.color.Black));
+					}
+					
+					oldVal = autoLowScore.getValue();
+					if(!waitRight){
+						if(event.getAxisValue(MotionEvent.AXIS_RZ)>0.75){
+							autoLowScore.setValue(autoLowScore.getValue()-1);
+							waitRight = true;
+						}
+						else if(event.getAxisValue(MotionEvent.AXIS_RZ)<-0.75){
+							autoLowScore.setValue(autoLowScore.getValue()+1);
+							waitRight = true;
+						}
+					}
+					
+					newVal = autoLowScore.getValue();
+					
+					if(oldVal>newVal && oldVal != 0)
+						autoLowHot[oldVal-1].setChecked(false);
+					
+					// disable everything that was enabled before
+					for(int i = 0; i < oldVal; i++){
+						autoLowHot[i].setEnabled(false);
+						autoLowHot[i].setTextColor(getResources().getColor(R.color.Gray));
+					}
+					
+					// enable everything that should be enabled now
+					for(int i = 0; i < newVal; i++){
+						autoLowHot[i].setEnabled(true);
+						autoLowHot[i].setTextColor(getResources().getColor(R.color.Black));
+					}
+					return true;
+					
+				default:
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 }

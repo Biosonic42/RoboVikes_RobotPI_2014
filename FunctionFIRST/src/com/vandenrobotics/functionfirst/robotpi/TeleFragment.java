@@ -15,6 +15,7 @@ import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -400,6 +401,32 @@ public class TeleFragment extends Fragment {
 			e.printStackTrace();
 			viewsAssigned=false;
 		}
+	}
+	
+	public boolean onMyKeyDown(int keyCode){
+		switch(keyCode){
+		case KeyEvent.KEYCODE_BUTTON_A:
+			buttonRecord.performClick();
+			break;
+		case KeyEvent.KEYCODE_BUTTON_Y:
+			buttonRecord.performLongClick();
+			break;
+		case KeyEvent.KEYCODE_BUTTON_B:
+			buttonLowScoreUp.performClick();
+			break;
+		case KeyEvent.KEYCODE_BUTTON_X:
+			buttonLowScoreDown.performClick();
+			break;
+		case KeyEvent.KEYCODE_BUTTON_THUMBL:
+			buttonUndo.performClick();
+			break;
+		case KeyEvent.KEYCODE_BUTTON_THUMBR:
+			buttonRedo.performClick();
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 	
 	private void drawPoints(){

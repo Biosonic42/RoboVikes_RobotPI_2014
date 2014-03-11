@@ -1,5 +1,6 @@
 package com.vandenrobotics.functionfirst;
 
+import com.vandenrobotics.functionfirst.robotpi.ScoutActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;

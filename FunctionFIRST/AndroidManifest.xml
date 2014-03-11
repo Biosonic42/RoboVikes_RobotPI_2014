@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vandenrobotics.functionfirst.ScoutActivity"
+            android:name="com.vandenrobotics.functionfirst.robotpi.ScoutActivity"
             android:label="@string/title_activity_scout"
             android:parentActivityName="com.vandenrobotics.functionfirst.MainActivity" >
             <meta-data
@@ -33,9 +33,9 @@
                 android:value="com.vandenrobotics.functionfirst.MainActivity" />
         </activity>
         <activity
-            android:name="com.vandenrobotics.functionfirst.MatchActivity"
+            android:name="com.vandenrobotics.functionfirst.robotpi.MatchActivity"
             android:label="@string/title_activity_scout"
-            android:parentActivityName="com.vandenrobotics.functionfirst.ScoutActivity"
+            android:parentActivityName="com.vandenrobotics.functionfirst.robotpi.ScoutActivity"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden" >
             <meta-data

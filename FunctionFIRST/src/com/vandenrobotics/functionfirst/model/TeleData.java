@@ -8,26 +8,98 @@ import android.os.Parcelable;
 public class TeleData
 		implements Parcelable {
 	
-	public ArrayList<CycleData> cycles;
+	public ArrayList<Double> intakeTimes;
+	public int lowScore;
+	public ArrayList<HotSpot> hotSpots;
 	
 	public TeleData(){
-		cycles = new ArrayList<CycleData>();
-		cycles.add(new CycleData());
+		intakeTimes = new ArrayList<Double>();
+		lowScore = 0;
+		hotSpots = new ArrayList<HotSpot>();
 	}
 	
 	@Override
 	public String toString(){
-		String returnVal = cycles.size() + ",";
-		for(int i = 0; i<cycles.size(); i++){
-			for(int j = 0; j<=8; j++){
-				if(cycles.get(i)!=null)
-					returnVal += cycles.get(i).gridData[j].toString() + ",";
-			}
-			returnVal += cycles.get(i).goalsProgress + ",";
-			returnVal += cycles.get(i).tcProgress + ",";
+		int numIntakes = intakeTimes.size();
+		int numHotSpots = hotSpots.size();
+		
+		String returnValue = ""+numIntakes+",";
+		for(int i = 0; i < numIntakes; i++){
+			returnValue += intakeTimes.get(i);
+			returnValue += ",";
 		}
 		
-		return returnVal;
+		returnValue+=lowScore;
+		returnValue+=",";
+		
+		returnValue+=numHotSpots;
+		returnValue+=",";
+		for(int i = 0; i < numHotSpots; i++){
+			returnValue += hotSpots.get(i).type;
+			returnValue += ",";
+			returnValue += hotSpots.get(i).x;
+			returnValue += ",";
+			returnValue += hotSpots.get(i).y;
+			returnValue += ",";
+		}
+		returnValue = returnValue.substring(0,returnValue.lastIndexOf(","));
+		
+		return returnValue;
+	}
+	
+	public boolean fromString(String string){
+		try{
+			System.out.println("TELEDATA: " + string);
+			String[] dataString = string.split(",");
+			double[] data = new double[dataString.length];
+			
+			try{
+				for(int i = 0; i < data.length; i++)
+					data[i] = Double.parseDouble(dataString[i]);
+			} catch (NumberFormatException e){
+				e.printStackTrace();
+				return false;
+			} catch (IndexOutOfBoundsException e){
+				e.printStackTrace();
+				return false;
+			}
+			
+			int index = 0;
+			int numIntakes = (int)data[index];
+			index += 1;
+			ArrayList<Double> intakes = new ArrayList<Double>();
+			for(int i = 0; i < numIntakes; i++){
+				intakes.add(data[index]);
+				index+=1;
+			}
+			intakeTimes = intakes;
+			
+			lowScore = (int)data[index];
+			index += 1;
+			
+			int numHotSpots = (int)data[index];
+			index += 1;
+			ArrayList<HotSpot> hSpots = new ArrayList<HotSpot>();
+			//if(numHotSpots != 0){
+				for(int i = 0; i < numHotSpots; i++){
+					HotSpot hotSpot = new HotSpot((int)data[index],data[index+1],data[index+2]);
+					index+=3;
+					hSpots.add(hotSpot);
+				}
+			//}
+			hotSpots = hSpots;
+			
+			
+		} catch (IndexOutOfBoundsException e){
+			e.printStackTrace();
+			return false;
+		} catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		
+		// only way it can get to this point is if there are no exceptions
+		return true;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package com.vandenrobotics.functionfirst.adapter;
 
-import com.vandenrobotics.functionfirst.*;
+import com.vandenrobotics.functionfirst.robotpi.*;
 import com.vandenrobotics.functionfirst.model.AutoData;
 import com.vandenrobotics.functionfirst.model.TeleData;
 import com.vandenrobotics.functionfirst.model.PostData;

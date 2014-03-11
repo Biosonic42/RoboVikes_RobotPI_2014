@@ -1,5 +1,6 @@
-package com.vandenrobotics.functionfirst;
+package com.vandenrobotics.functionfirst.robotpi;
 
+import com.vandenrobotics.functionfirst.R;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +16,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.vandenrobotics.functionfirst.model.CycleData;
 import com.vandenrobotics.functionfirst.model.MatchData;
 import com.vandenrobotics.functionfirst.model.TeamList;
 
@@ -76,85 +76,22 @@ public class ScoutActivity extends Activity {
 		File root = Environment.getExternalStorageDirectory();
 		File dir = new File(root.getAbsolutePath()+ "/ScoutData/device-" + deviceNumber);
 		dir.mkdirs();
-		System.out.println("DEVICE NUMBER: " + deviceNumber);
 		
 		File file = new File(dir,"data.txt");
 		try{
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
-			while ((line = br.readLine()) != null){
-				String[] dataString = line.split(",");
-
-				int[] data = new int[dataString.length];
-				
-				try {
-					for(int i = 0; i < data.length; i++){
-						data[i] = Integer.parseInt(dataString[i]); 
-					}
-					int index = 0;
-					int match = data[index]-1;
-
+			while((line=br.readLine())!=null){
+				try{
+					int match = Integer.parseInt(line.substring(0,1))-1;
 					mMD[match] = new MatchData();
-					
-					// initData
-					mMD[match].initData.matchNumber = data[index];
-					index+=1;
-					mMD[match].initData.teamNumber = data[index];
-					index+=1;
-					mMD[match].initData.allianceColor = data[index];
-					index+=1;
-					
-					// autoData
-					mMD[match].autoData.hadAuto = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.mobilityBonus = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.goalieZone = (data[index]==1);
-					index+=1;
-					mMD[match].autoData.highScore = data[index];
-					index+=1;
-					mMD[match].autoData.lowScore = data[index];
-					index+=1;
-					mMD[match].autoData.hotScore = data[index];
-					index+=2;
-					
-					// teleData
-					for(int i = 0; i < data[9]; i++){
-						mMD[match].teleData.cycles.add(new CycleData());
-						for(int j = 0; j < 9; j++){
-							mMD[match].teleData.cycles.get(i).gridData[j].passed = (data[index]==1);
-							index+=1;
-							mMD[match].teleData.cycles.get(i).gridData[j].where = data[index];
-							index+=1;
-						}
-						mMD[match].teleData.cycles.get(i).goalsProgress = data[index];
-						index+=1;
-						mMD[match].teleData.cycles.get(i).tcProgress = data[index];
-						index+=1;
-					}
-					
-					// postData
-					mMD[match].postData.regFouls = data[index];
-					index+=1;
-					mMD[match].postData.techFouls = data[index];
-					index+=1;
-					mMD[match].postData.disabled = (data[index]==1);
-					index+=1;
-					mMD[match].postData.broken = (data[index]==1);
-					index+=1;
-					mMD[match].postData.yellowCard = (data[index]==1);
-					index+=1;
-					mMD[match].postData.redCard = (data[index]==1);
-					index+=1;
-					mMD[match].postData.defensive = (data[index]==1);
-					
-				} catch (NumberFormatException e){
-					e.printStackTrace();
-				} catch (IndexOutOfBoundsException e){
+					System.out.print(mMD[match].fromString(line));
+					System.out.println("\n\r");
+				} catch (Exception e){
 					e.printStackTrace();
 				}
-			} 
+			}
 			br.close();
 			f.close();
 		} catch (FileNotFoundException e){
@@ -177,7 +114,7 @@ public class ScoutActivity extends Activity {
 			for(int i=0;
 				i<mMatchResults.length; i++) {
 					if(mMatchResults[i]!=null)
-						pw.println(mMatchResults[i].toString()+"\n\r");
+						pw.println(mMatchResults[i].toString()+"\r\n");
 			}
 			pw.flush();
 			pw.close();

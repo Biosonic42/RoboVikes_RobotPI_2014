@@ -5,7 +5,9 @@ import com.vandenrobotics.functionfirst.model.PostData;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.InputDevice;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -25,6 +27,9 @@ public class PostFragment extends Fragment {
 
 	
 	private boolean viewsAssigned = false;
+	
+	private boolean waitLeft = false;
+	private boolean waitRight = false;
 	
 	private PostData mPostData;
 	
@@ -126,5 +131,52 @@ public class PostFragment extends Fragment {
 			e.printStackTrace();
 			viewsAssigned=false;
 		}
+	}
+	
+	public boolean onMyKeyDown(int keyCode){
+		return false;
+	}
+	
+	public boolean onMyGenericMotionEvent(MotionEvent event){
+		if((event.getSource() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK){
+			switch(event.getAction()){
+			case 2: // either joystick, reading off for some reason
+				if(event.getAxisValue(MotionEvent.AXIS_Y)<0.25 &&
+						event.getAxisValue(MotionEvent.AXIS_Y)>-0.25){
+					waitLeft = false;
+				}
+				if(event.getAxisValue(MotionEvent.AXIS_RZ)<0.25 &&
+						event.getAxisValue(MotionEvent.AXIS_RZ)>-0.25){
+					waitRight = false;
+				}
+				
+				if(!waitLeft){
+					if(event.getAxisValue(MotionEvent.AXIS_Y)>0.75){
+						postRegFouls.setValue(postRegFouls.getValue()-1);
+						waitLeft = true;
+					}
+					else if(event.getAxisValue(MotionEvent.AXIS_Y)<-0.75){
+						postRegFouls.setValue(postRegFouls.getValue()+1);
+						waitLeft = true;
+					}
+				}
+
+				if(!waitRight){
+					if(event.getAxisValue(MotionEvent.AXIS_RZ)>0.75){
+						postTechFouls.setValue(postTechFouls.getValue()-1);
+						waitRight = true;
+					}
+					else if(event.getAxisValue(MotionEvent.AXIS_RZ)<-0.75){
+						postTechFouls.setValue(postTechFouls.getValue()+1);
+						waitRight = true;
+					}
+				}
+				return true;
+				
+			default:
+				return false;
+			}
+		}
+		return false;
 	}
 }

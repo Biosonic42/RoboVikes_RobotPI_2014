@@ -5,6 +5,10 @@ import com.vandenrobotics.functionfirst.adapter.TabsPagerAdapter;
 import com.vandenrobotics.functionfirst.adapter.TabsViewPager;
 import com.vandenrobotics.functionfirst.model.MatchData;
 
+import com.vandenrobotics.functionfirst.robotpi.AutoFragment;
+import com.vandenrobotics.functionfirst.robotpi.TeleFragment;
+import com.vandenrobotics.functionfirst.robotpi.PostFragment;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
@@ -16,8 +20,10 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -254,5 +260,55 @@ public class MatchActivity extends FragmentActivity
 
 	@Override
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event){
+		if(keyCode == KeyEvent.KEYCODE_BUTTON_R1 ||
+				keyCode == KeyEvent.KEYCODE_BUTTON_R2){
+			viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+			actionBar.setSelectedNavigationItem(viewPager.getCurrentItem());
+			return true;
+		}
+		if(keyCode == KeyEvent.KEYCODE_BUTTON_L1 ||
+				keyCode == KeyEvent.KEYCODE_BUTTON_L2){
+			viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+			actionBar.setSelectedNavigationItem(viewPager.getCurrentItem());
+			return true;
+		}
+		else{
+			switch(viewPager.getCurrentItem()){
+			case 0:
+				return ((AutoFragment) getSupportFragmentManager().
+							findFragmentByTag("android:switcher:" 
+								   + R.id.pager + ":0" )).onMyKeyDown(keyCode);
+			case 1:
+				return ((TeleFragment) getSupportFragmentManager().
+						findFragmentByTag("android:switcher:" 
+							   + R.id.pager + ":1" )).onMyKeyDown(keyCode);
+			case 2:
+				return ((PostFragment) getSupportFragmentManager().
+						findFragmentByTag("android:switcher:" 
+							   + R.id.pager + ":2" )).onMyKeyDown(keyCode);
+			default:
+				return super.onKeyDown(keyCode, event);
+			}
+		}
+	}
+	
+	@Override
+	public boolean onGenericMotionEvent(MotionEvent event){
+		switch(viewPager.getCurrentItem()){
+		case 0:
+			return ((AutoFragment) getSupportFragmentManager().
+						findFragmentByTag("android:switcher:" 
+							   + R.id.pager + ":0" )).onMyGenericMotionEvent(event);
+		case 2:
+			return ((PostFragment) getSupportFragmentManager().
+					findFragmentByTag("android:switcher:" 
+						   + R.id.pager + ":2" )).onMyGenericMotionEvent(event);
+		default:
+			return super.onGenericMotionEvent(event);
+		}
 	}
 }

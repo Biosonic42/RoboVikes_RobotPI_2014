@@ -190,9 +190,9 @@ public class MatchActivity extends FragmentActivity
 	}
 	
 	@Override
-	protected void onPause(){
+	protected void onPause(){		
 		super.onPause();
-
+		
 		getSupportFragmentManager().
 		findFragmentByTag("android:switcher:" 
 						   + R.id.pager + ":" 

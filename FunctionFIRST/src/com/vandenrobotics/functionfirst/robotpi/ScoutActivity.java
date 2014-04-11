@@ -9,13 +9,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Set;
 
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.bluetooth.*;
 import android.content.Context;
 import android.content.Intent;
 
+import com.vandenrobotics.functionfirst.adapter.BtConnectionThread;
 import com.vandenrobotics.functionfirst.model.MatchData;
 import com.vandenrobotics.functionfirst.model.TeamList;
 
@@ -28,6 +31,8 @@ public class ScoutActivity extends Activity {
 	public static TeamList[] mTeamList = new TeamList[200]; //readMatches();
 	public static MatchData[] mMatchResults = readData();
 	public static int maxMatches = readMatches();
+	
+	public static int REQUEST_ENABLE_BT = 1;
 	
 	
 	@Override
@@ -78,16 +83,21 @@ public class ScoutActivity extends Activity {
 		dir.mkdirs();
 		
 		File file = new File(dir,"data.txt");
+
 		try{
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
 			while((line=br.readLine())!=null){
 				try{
-					int match = Integer.parseInt(line.substring(0,1))-1;
+					String[] lineSections = line.split("\\$");
+					System.out.println(lineSections[0]);
+					String[] initData = lineSections[0].split(",");
+					System.out.println(initData[0]);
+					int match = Integer.parseInt(initData[0])-1;
+					System.out.println("MATCH NUMBER: " + match);
 					mMD[match] = new MatchData();
-					System.out.print(mMD[match].fromString(line));
-					System.out.println("\n\r");
+					mMD[match].fromString(line);
 				} catch (Exception e){
 					e.printStackTrace();
 				}
@@ -103,6 +113,7 @@ public class ScoutActivity extends Activity {
 	}
 	
 	public static void writeData(){
+		// write data to local directory
 		File root = Environment.getExternalStorageDirectory();
 		File dir = new File(root.getAbsolutePath()+ "/ScoutData/device-" + deviceNumber);
 		dir.mkdirs();
@@ -111,10 +122,11 @@ public class ScoutActivity extends Activity {
 		try{
 			FileOutputStream f = new FileOutputStream(file);
 			PrintWriter pw = new PrintWriter(f);
-			for(int i=0;
-				i<mMatchResults.length; i++) {
-					if(mMatchResults[i]!=null)
-						pw.println(mMatchResults[i].toString()+"\r\n");
+			for(int i = 0; i < mMatchResults.length; i++){
+				if(mMatchResults[i]!=null){
+					pw.write(mMatchResults[i].toString()+"\r\n");
+					System.out.println(mMatchResults[i].toString());
+				}
 			}
 			pw.flush();
 			pw.close();
@@ -122,6 +134,40 @@ public class ScoutActivity extends Activity {
 		} catch (FileNotFoundException e){
 			e.printStackTrace();
 		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
+		BtConnectionThread mBtThread = null;
+		// attempt to send data by Bluetooth Connection
+		try{
+			BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+			if(mBluetoothAdapter == null){
+				// device does not support bluetooth
+				return;
+			}
+			
+			if(!mBluetoothAdapter.isEnabled()){
+				// for now, user must enable bluetooth beforehand, not going to ask every match
+				return;
+			}
+			
+			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+			if(pairedDevices.size()>0){
+				for(BluetoothDevice device : pairedDevices){
+					System.out.println(device.getAddress());
+					if(device.getAddress().equals("A4:DB:30:A8:80:44"))
+					{
+						mBtThread = new BtConnectionThread(device);
+						System.out.println("FOUND BT DEVICE");
+						break;
+					}
+				}
+			}
+			
+			mBtThread.run();
+			mBtThread.write(file);
+			
+		} catch (Exception e){
 			e.printStackTrace();
 		}
 	}

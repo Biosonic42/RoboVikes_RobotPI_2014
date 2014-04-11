@@ -24,8 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/versionText"
         android:layout_centerHorizontal="true"
-        android:textSize="16sp"
-        android:text="@string/title_developer" />
+        android:gravity="center_horizontal"
+        android:text="@string/title_developer"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/titleText"
@@ -33,8 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="22sp"
-        android:text="@string/title_app" />
+        android:gravity="center_horizontal"
+        android:text="@string/title_app"
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/seasonText"
@@ -58,8 +60,8 @@
         android:id="@+id/aboutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/seasonText"
         android:layout_below="@+id/scoutButton"
-        android:layout_centerHorizontal="true"
         android:onClick="showAbout"
         android:text="@string/button_about" />
 

@@ -83,16 +83,21 @@ public class ScoutActivity extends Activity {
 		dir.mkdirs();
 		
 		File file = new File(dir,"data.txt");
+
 		try{
 			FileInputStream f = new FileInputStream(file);
 			BufferedReader br = new BufferedReader(new InputStreamReader(f));
 			String line;
 			while((line=br.readLine())!=null){
 				try{
-					int match = Integer.parseInt(line.substring(0,1))-1;
+					String[] lineSections = line.split("\\$");
+					System.out.println(lineSections[0]);
+					String[] initData = lineSections[0].split(",");
+					System.out.println(initData[0]);
+					int match = Integer.parseInt(initData[0])-1;
+					System.out.println("MATCH NUMBER: " + match);
 					mMD[match] = new MatchData();
-					System.out.print(mMD[match].fromString(line));
-					System.out.println("\n\r");
+					mMD[match].fromString(line);
 				} catch (Exception e){
 					e.printStackTrace();
 				}
@@ -117,14 +122,12 @@ public class ScoutActivity extends Activity {
 		try{
 			FileOutputStream f = new FileOutputStream(file);
 			PrintWriter pw = new PrintWriter(f);
-			for(int i=0;
-				i<mMatchResults.length; i++) {
-					if(mMatchResults[i]!=null){
-						System.out.println(mMatchResults[i].toString());
-						pw.println(mMatchResults[i].toString()+"\r\n");
-					}
+			for(int i = 0; i < mMatchResults.length; i++){
+				if(mMatchResults[i]!=null){
+					pw.write(mMatchResults[i].toString()+"\r\n");
+					System.out.println(mMatchResults[i].toString());
+				}
 			}
-			
 			pw.flush();
 			pw.close();
 			f.close();
